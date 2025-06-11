@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login PGO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    form {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    input[type="text"], input[type="password"] {
+      width: 200px;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #034055;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #04677a;
+    }
+    #message {
+      margin-top: 10px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <h2>Login PGO</h2>
+    <input type="text" id="userId" placeholder="ID Pengguna" required /><br />
+    <input type="password" id="password" placeholder="Katalaluan" required /><br />
+    <button type="submit">Log Masuk</button>
+    <p id="message"></p>
+  </form>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzd9UuflsvcxJhyQ1pAS4YNVIL9d8n1zIQV4xIRNpNPHgW3mpd4VlIId4Hei0I8_G8_Pw/exec";
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const userId = document.getElementById("userId").value.trim();
+      const password = document.getElementById("password").value.trim();
+localStorage.setItem("user", userId); // Simpan ID pengguna untuk semakan seterusnya
+      fetch(`${scriptURL}?user=${userId}&pass=${password}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            window.location.href = data.redirect;
+          } else {
+            document.getElementById("message").textContent = "ID atau katalaluan salah.";
+          }
+        })
+        .catch(err => {
+          document.getElementById("message").textContent = "Ralat sambungan ke pelayan.";
+        });
+    });
+  </script>
+</body>
+</html>

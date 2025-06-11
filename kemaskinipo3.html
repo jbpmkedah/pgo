@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KEMASKINI PO3</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #017cba, #000001);
+    color: white;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+  }
+  header img {
+    width: 80px;
+    height: 100px;
+  }
+  header h1 {
+    margin-left: 20px;
+    font-size: 24px;
+  }
+  .navbar {
+    background-color: #ffffff88;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  .navbar a,
+  .dropdown .dropbtn {
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .navbar a:hover,
+  .dropdown:hover .dropbtn {
+    background-color: #0191a7;
+    color: white;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0191a7;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .dropdown-content a:hover {
+    background-color: #01455c;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  main {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    font-weight: bold;
+  }
+  .form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #017cba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .btn:hover {
+    background-color: #015d8a;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a href="jbpmkedah.html">
+    <img alt="Logo" src="media/logo.png"/>
+  </a>
+  <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+</header>
+<nav class="navbar">
+  <a href="jbpmkedah.html">HALAMAN UTAMA</a>
+  <div class="dropdown">
+    <button class="dropbtn">PO3 ▾</button>
+    <div class="dropdown-content">
+      <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+      <a href="logistik.html">LOGISTIK</a>
+      <a href="paparan.html">PAPARAN</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">PGO ▾</button>
+    <div class="dropdown-content">
+      <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+      <a href="muatturun.html">MUAT TURUN</a>
+      <a href="data.html">STATUS KEMASKINI</a>
+    </div>
+  </div>
+  <a href="#">HUBUNGI</a>
+  <div style="flex-grow:1"></div>
+  <button onclick="logout()" style="padding: 10px 20px; background-color: #910000; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">Log Keluar</button>
+</nav>
+<main>
+  <h2 style="text-align: center;">LAPORAN KEKUATAN PERSONEL DAN LOGISTIK NEGERI (12JAM)</h2>
+  <form action="https://script.google.com/macros/s/AKfycbzBybzEloLjL_vyn3_MTpmAGi4rQyYCtX-4bzyzUK3IlUxANzZbxSihAjxq8N673BU2Bw/exec" method="post" onsubmit="return handleSubmit(this);">
+    <label for="PPK">PENYELIA PGO KEDAH:</label>
+    <input class="form-control" name="PPK" type="text" required />
+
+    <label for="MASA1">MASA:</label>
+    <select class="form-control" name="MASA1" required>
+      <option value="">-</option>
+      <option value="0800">0800</option>
+      <option value="2000">2000</option>
+    </select>
+
+    <label for="HINGGA1">HINGGA:</label>
+    <select class="form-control" name="HINGGA1" required>
+      <option value="">-</option>
+      <option value="0800">0800</option>
+      <option value="2000">2000</option>
+    </select>
+
+    <label for="TARIKH1">TARIKH:</label>
+    <input class="form-control" name="TARIKH1" type="date" required />
+
+    <label for="PASUKAN1">PASUKAN:</label>
+    <select class="form-control" name="PASUKAN1" required>
+      <option value="">-</option>
+      <option value="PASUKAN A">PASUKAN A</option>
+      <option value="PASUKAN B">PASUKAN B</option>
+      <option value="PASUKAN C">PASUKAN C</option>
+    </select>
+
+    <input type="hidden" name="formType" value="pgo" />
+    <input type="hidden" name="sheetName" value="PGO ( HQ )" />
+
+    <div class="text-center">
+      <button class="btn" type="submit">HANTAR</button>
+    </div>
+  </form>
+</main>
+<script>
+  function handleSubmit(form) {
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text())
+    .then(responseText => {
+      alert("✅ Data berjaya dihantar!");
+      form.reset();
+    })
+    .catch(error => {
+      alert("❌ Gagal menghantar data. Sila cuba semula.");
+      console.error("Ralat:", error);
+    });
+    return false;
+  }
+
+  function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

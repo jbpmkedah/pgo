@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="ms">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paparan PO3 - BBP ALOR SETAR</title>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: rgba(0,0,0,0.8);
+      color: white;
+    }
+    header img {
+      width: 80px;
+      height: 100px;
+    }
+    header h1 {
+      margin-left: 20px;
+      font-size: 24px;
+    }
+    .navbar {
+      background-color: #ffffff88;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: black;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      color: white;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      top: 100%;
+      left: 0;
+      z-index: 999;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    main {
+      padding: 20px;
+    }
+    
+    iframe {
+  width: 100%;
+  min-height: 800px;
+  height: calc(100vh - 200px); /* tetap responsif */
+  border: none;
+}
+  </style>
+</head>
+<body>
+<header>
+<a href="jbpmkedah.html">
+<img alt="Logo" src="media/logo.png"/>
+</a>
+<h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+</header>
+<nav class="navbar">
+<a href="jbpmkedah.html">HALAMAN UTAMA</a>
+<div class="dropdown">
+<button class="dropbtn">PO3 ▾</button>
+<div class="dropdown-content">
+<a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+<a href="logistik.html">LOGISTIK</a>
+<a href="paparan.html">PAPARAN</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">PGO ▾</button>
+<div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+</div>
+<a href="#">HUBUNGI</a>
+<div style="flex-grow:1"></div><button onclick="logout()" style="padding: 10px 20px; background-color: #910000; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">Log Keluar</button>
+
+</nav>
+<main>
+<h2 style="text-align: center;">LAPORAN KEKUATAN PERSONEL DAN LOGISTIK NEGERI (12JAM)</h2>
+<button onclick="hantarSemuaDataKosong()" class="btn-primary">HANTAR NILAI 0 KE SEMUA BALAI</button>
+<div style="text-align: center; margin-top: 20px;">
+<a class="btn-download" download="" href="https://docs.google.com/spreadsheets/d/1xlYUAAtaFA7MdeqZbCN8EJgT8vvI7bk80akG6tjX4VE/export?format=xlsx">
+<button style="padding: 10px 20px; background-color: #034055; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+      📥 Muat Turun Data PGO (HQ) [.xlsx]
+    </button>
+</a>
+</div>
+<br>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR-GHEeToKnURaq8Y6hFTjz2YCaoXejgpyKc1gms_gphYaFiBKJG4Wq7EYx3Gt1b2b8OFHD5viV7k5Z/pubhtml?gid=1830052198&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+
+</main>
+<script>
+  async function hantarSemuaDataKosong() {
+    const balaiList = [
+      "AST 01", "LKW 02", "JTR 03", "JRJ 04", "GCK 05", "SGP 06", "BLG 07", "KLM 08", "TBT 09",
+      "SIK 010", "KNG 011", "BKH 012", "SDG 013", "KHT 014", "LPP 015", "YAN 016", "AMJ 017", "PDG 018", "PSN 019", "PMS 020"
+    ];
+
+    const url = "https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec"; // 🔁 Ganti URL ini
+
+    const logistikPayload = {
+      formType: "logistik",
+      FRT1: 0, FRT0: 0,
+      LFRT1: 0, LFRT0: 0,
+      WT20L1: 0, WT20L0: 0,
+      WT10L1: 0, WT10L0: 0,
+      ALP1: 0, ALP0: 0,
+      HPPM1: 0, HPPM0: 0,
+      RIM1: 0, RIM0: 0,
+      HAZMAT1: 0, HAZMAT0: 0,
+      BATANDER1: 0, BATANDER0: 0,
+      RRV1: 0, RRV0: 0
+    };
+
+    const personalPayload = {
+      formType: "personal",
+      MASA: "-", HINGGA: "-", TARIKH: new Date().toISOString().split("T")[0],
+      KETUA_BALAI: "-", PENYELIA_PASUKAN: "-", PASUKAN: "-"
+    };
+
+    for (const balai of balaiList) {
+      // Logistik
+      let data1 = new URLSearchParams({ ...logistikPayload, sheetName: balai });
+      await fetch(url, { method: "POST", body: data1 });
+
+      // Personal
+      let data2 = new URLSearchParams({ ...personalPayload, sheetName: balai });
+      await fetch(url, { method: "POST", body: data2 });
+
+      console.log(`Data kosong dihantar ke ${balai}`);
+    }
+
+    alert("Data nilai 0 berjaya dihantar ke semua balai.");
+  }
+</script>
+
+</body>
+</html>
+<script>
+  const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
+  const loggedUser = localStorage.getItem("user");
+
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");
+    window.location.href = "login.html";
+  }
+
+function logout() {
+  localStorage.removeItem('user');
+  window.location.href = 'login.html';
+}
+</script>
