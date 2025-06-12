@@ -184,6 +184,13 @@
   </form>
 </main>
 <script>
+   const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
+   const loggedUser = localStorage.getItem("user");
+
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");
+    window.location.href = "login.html";
+  }
   function handleSubmit(form) {
     const formData = new FormData(form);
     fetch(form.action, {
@@ -206,13 +213,7 @@
     localStorage.removeItem('user');
     window.location.href = 'login.html';
   }
-  const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
-  const loggedUser = localStorage.getItem("user");
-
-  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
-    alert("Akses tidak dibenarkan. Sila log masuk.");
-    window.location.href = "login.html";
-  }
+ 
 </script>
 </body>
 </html>
