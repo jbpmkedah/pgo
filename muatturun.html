@@ -120,7 +120,6 @@
 </nav>
 <main>
 <h2 style="text-align: center;">LAPORAN KEKUATAN PERSONEL DAN LOGISTIK NEGERI (12JAM)</h2>
-<button onclick="hantarSemuaDataKosong()" class="btn-primary">HANTAR NILAI 0 KE SEMUA BALAI</button>
 <div style="text-align: center; margin-top: 20px;">
 <a class="btn-download" download="" href="https://docs.google.com/spreadsheets/d/1xlYUAAtaFA7MdeqZbCN8EJgT8vvI7bk80akG6tjX4VE/export?format=xlsx">
 <button style="padding: 10px 20px; background-color: #034055; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
@@ -132,50 +131,6 @@
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR-GHEeToKnURaq8Y6hFTjz2YCaoXejgpyKc1gms_gphYaFiBKJG4Wq7EYx3Gt1b2b8OFHD5viV7k5Z/pubhtml?gid=1830052198&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
 
 </main>
-<script>
-  async function hantarSemuaDataKosong() {
-    const balaiList = [
-      "AST 01", "LKW 02", "JTR 03", "JRJ 04", "GCK 05", "SGP 06", "BLG 07", "KLM 08", "TBT 09",
-      "SIK 010", "KNG 011", "BKH 012", "SDG 013", "KHT 014", "LPP 015", "YAN 016", "AMJ 017", "PDG 018", "PSN 019", "PMS 020"
-    ];
-
-    const url = "https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec"; // 🔁 Ganti URL ini
-
-    const logistikPayload = {
-      formType: "logistik",
-      FRT1: 0, FRT0: 0,
-      LFRT1: 0, LFRT0: 0,
-      WT20L1: 0, WT20L0: 0,
-      WT10L1: 0, WT10L0: 0,
-      ALP1: 0, ALP0: 0,
-      HPPM1: 0, HPPM0: 0,
-      RIM1: 0, RIM0: 0,
-      HAZMAT1: 0, HAZMAT0: 0,
-      BATANDER1: 0, BATANDER0: 0,
-      RRV1: 0, RRV0: 0
-    };
-
-    const personalPayload = {
-      formType: "personal",
-      MASA: "-", HINGGA: "-", TARIKH: new Date().toISOString().split("T")[0],
-      KETUA_BALAI: "-", PENYELIA_PASUKAN: "-", PASUKAN: "-"
-    };
-
-    for (const balai of balaiList) {
-      // Logistik
-      let data1 = new URLSearchParams({ ...logistikPayload, sheetName: balai });
-      await fetch(url, { method: "POST", body: data1 });
-
-      // Personal
-      let data2 = new URLSearchParams({ ...personalPayload, sheetName: balai });
-      await fetch(url, { method: "POST", body: data2 });
-
-      console.log(`Data kosong dihantar ke ${balai}`);
-    }
-
-    alert("Data nilai 0 berjaya dihantar ke semua balai.");
-  }
-</script>
 
 </body>
 </html>
