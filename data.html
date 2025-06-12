@@ -275,7 +275,13 @@
 
       alert("Data nilai 0 berjaya dihantar ke semua balai.");
     }
+    const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
+    const loggedUser = localStorage.getItem("user");
 
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");
+    window.location.href = "login.html";
+  }
     function logout() {
       localStorage.removeItem("user");
       window.location.href = "login.html";
