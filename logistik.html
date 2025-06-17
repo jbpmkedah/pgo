@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LOGISTIK PO3</title>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    header img {
+      height: 80px;
+    }
+
+    #datetime {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .navbar {
+      background-color: #ffffff22;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      border-radius: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+footer {
+      background-color: #000000cc;
+      color: #ddd;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .navbar a,
+      .dropdown .dropbtn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    h3, h5 {
+      text-align: center;
+    }
+
+    form {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin: 20px;
+    }
+
+    label, select, input {
+      margin: 10px;
+      padding: 4px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+      color: black;
+      font-size: 10px;
+    }
+
+    table th, table td {
+      padding: 4px;
+      text-align: center;
+      border: 1px solid #000000;
+    }
+
+    table th {
+      background-color: #017cba;
+      color: rgb(0, 0, 0);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 10px;
+      padding: 2px;
+      text-align: center;
+      margin: 0;
+    }
+
+    .btn-primary {
+      background-color: #034055;
+      color: white;
+      border:#000000;
+      padding: 10px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-primary:hover {
+      background-color: #01455c;
+    }
+  
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
+    table, table th, table td {
+      font-size: 12px !important;
+    }
+    @keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+}
+
+.fade-in-up.delay-1 { animation-delay: 0.3s; }
+.fade-in-up.delay-2 { animation-delay: 0.6s; }
+.fade-in-up.delay-3 { animation-delay: 0.9s; }
+.fade-in-up.delay-4 { animation-delay: 1.2s; }
+.fade-in-up.delay-5 { animation-delay: 1.5s; }
+.fade-in-up.delay-6 { animation-delay: 1.8s; }
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+  animation-fill-mode: both;
+}
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+    </style>
+</head>
+<body>
+<header>
+<img src="media/logo.png" alt="Logo Kiri">
+    <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+    <img src="media/logo1.png" alt="Logo Kanan">
+</header>
+<nav class="navbar">
+<a href="index.html">HALAMAN UTAMA</a>
+<div class="dropdown">
+      <button class="dropbtn">PO3 ▾</button>
+      <div class="dropdown-content">
+        <a href="paparan.html">PAPARAN</a>
+        <a href="logistik.html">LOGISTIK</a>
+        <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+        <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+      </div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">PGO ▾</button>
+      <div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+</div>
+<a href="panduan.html">PANDUAN</a>
+</nav>
+<h3 class="fade-in-up delay-1" style="text-align: center;">LAPORAN LOGISTIK NEGERI KEDAH (12JAM)</h3>
+<h5 class="fade-in-up delay-2" style="text-align: end;">Format PO3</h5>
+<form class="fade-in-up delay-3" action="https://script.google.com/macros/s/AKfycbyvnYAiHREgkDHXu2CdbAnpxU7hrvlQb54xuojLx6Gde1ifh6sNFdXkvJWsORj1eocF2A/exec" method="post" onsubmit="return handleSubmit(this);">
+<input name="formType" type="hidden" value="logistik"/>
+<label for="sheetName" class="fade-in-up delay-4">BALAI : </label>
+<select name="sheetName" required class="fade-in-up delay-4" required="">
+<option selected="" value="">Sila Pilih</option>
+<option value="AST 01">BBP ALOR SETAR</option>
+<option value="LKW 02">BBP LANGKAWI</option>
+<option value="JTR 03">BBP JITRA</option>
+<option value="JRJ 04">BBP JALAN RAJA</option>
+<option value="GCK 05">BBP GUAR CEMPEDAK</option>
+<option value="SGP 06">BBP SUNGAI PETANI</option>
+<option value="BLG 07">BBP BALING</option>
+<option value="KLM 08">BBP KULIM</option>
+<option value="TBT 09">BBP TIKAM BATU</option>
+<option value="SIK 010">BBP SIK</option>
+<option value="KNG 011">BBP KUALA NERANG</option>
+<option value="BKH 012">BBP BUKIT KAYU HITAM</option>
+<option value="SDG 013">BBP SERDANG</option>
+<option value="KHT 014">BBP KULIM HITECH</option>
+<option value="LPP 015">BBP PERSIARAN PUTRA</option>
+<option value="YAN 016">BBP YAN</option>
+<option value="AMJ 017">BBP AMANJAYA</option>
+<option value="PDG 018">BBP PENDANG</option>
+<option value="PSN 019">BBP POKOK SENA</option>
+<option value="PMS 020">BBP PADANG MAT SIRAT</option>
+</select>
+<table class="form-control fade-in-up delay-5" align="center" border="2" cellpadding="10" cellspacing="2" class="form-control">
+<tr>
+<th colspan="20" style="background-color:bisque;">JENTERA</th>
+</tr>
+<tr>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">FRT</th>
+<th colspan="2" style="background-color:aqua;">LFRT</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">WATER TANKER 20L</th>
+<th colspan="2" style="background-color:aqua;">WATER TANKER 10L</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">ALP</th>
+<th colspan="2" style="background-color:aqua;">HPPM</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">RIM</th>
+<th colspan="2" style="background-color:aqua;">HAZMAT</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">B.A. TANDER</th>
+<th colspan="2" style="background-color:aqua;">RRV</th>
+</tr>
+<tr>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+</tr>
+<tr>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="FRT1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="FRT0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LFRT1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LFRT0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="WT20L1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="WT20L0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="WT10L1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="WT10L0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="ALP1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="ALP0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="HPPM1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="HPPM0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="RIM1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="RIM0" required="required" size="2" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="HAZMAT1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="HAZMAT0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="BATANDER1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="BATANDER0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="RRV1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="RRV0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+</table>
+<table class="form-control fade-in-up delay-5" align="center" border="2" cellpadding="10" cellspacing="2" class="form-control">
+<tr>
+<th colspan="20" style="background-color:bisque;">JENTERA</th>
+</tr>
+<tr>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">MOBILE CP</th>
+<th colspan="2" style="background-color:aqua;">KOMUNIKASI</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">KEMBALIK</th>
+<th colspan="2" style="background-color:aqua;">EMRS</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">LIGHTING TRAILER</th>
+<th colspan="2" style="background-color:aqua;">TTL</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">FRV</th>
+<th colspan="2" style="background-color:aqua;">CFRT</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">LAIN-LAIN</th>
+</tr>
+<tr>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+</tr>
+<tr>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="MCP1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="MCP0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="KOMUNIKASI1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="KOMUNIKASI0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="KEMBALIK1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="KEMBALIK0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="EMRS1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="EMRS0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LT1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LT0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="TTL1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="TTL0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="FRV1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="FRV0" required="required" size="2" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="CFRT1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="CFRT0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LL1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LL0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+</table>
+<table class="form-control fade-in-up delay-6" align="center" border="2" cellpadding="10" cellspacing="2" class="form-control">
+<tr>
+<th colspan="20" style="background-color:bisque;">PENGANGKUTAN DI AIR</th>
+</tr>
+<tr>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">FIRE BOAT</th>
+<th colspan="2" style="background-color:aqua;">KEVLAR</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">ALUMINIUM</th>
+<th colspan="2" style="background-color:aqua;">ARIB</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">JETSKI</th>
+<th colspan="2" style="background-color:aqua;">DINGHY</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">WHALY</th>
+<th colspan="2" style="background-color:aqua;">HDPE</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">LAIN-LAIN</th>
+</tr>
+<tr>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+</tr>
+<tr>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="FB1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="FB0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="KEVLAR1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="KEVLAR0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="ALUMINIUM1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="ALUMINIUM0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="ARIB1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="ARIB0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="JETSKI1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="JETSKI0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="DINGHY1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="DINGHY0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="WHALY1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="WHALY0" required="required" size="2" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th><th style="background-color:aqua;"><input class="form-control" min="0" name="HDPE1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="HDPE0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LALA1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LALA0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+</table>
+<table class="form-control fade-in-up delay-6" align="center" border="2" cellpadding="10" cellspacing="2" class="form-control">
+<tr>
+<th colspan="20" style="background-color:bisque;">UTILITI</th>
+</tr>
+<tr>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">LORI 5TAN</th>
+<th colspan="2" style="background-color:aqua;">BAS 40</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">BAS 25</th>
+<th colspan="2" style="background-color:aqua;">4X4</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">VAN</th>
+<th colspan="2" style="background-color:aqua;">KEMBARA</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">PAJERO</th>
+<th colspan="2" style="background-color:aqua;">LORI 3TAN</th>
+<th colspan="2" style="background-color:rgb(0, 200, 255);">LAIN-LAIN</th>
+</tr>
+<tr>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+<th style="background-color:aqua;">BAIK</th>
+<th style="background-color:rgb(0, 200, 255);">ROSAK</th>
+</tr>
+<tr>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LORI1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LORI0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="BAS401" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="BAS400" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="BAS251" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="BAS250" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="X41" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="X40" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="VAN1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="VAN0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="KEMBARA1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="KEMBARA0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="PAJERO1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="PAJERO0" required="required" size="2" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LORII1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LORII0" required="required" size="2" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua;"><input class="form-control" min="0" name="LAILAI1" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255);"><input class="form-control" min="0" name="LAILAI0" required="required" size="1" style="width: 22px; text-align: center; font-size: 14px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+</table>
+<br/><br/>
+<div class="text-center fade-in-up delay-6" class="text-center">
+<button class="btn btn-primary" type="submit">HANTAR</button>
+</div>
+</form>
+<script>
+  function handleSubmit(form) {
+    const confirmSend = confirm("Sebelum menghantar maklumat, sila pastikan bahawa maklumat yang dimasukkan adalah tepat.\nJika terdapat sebarang perubahan selepas penghantaran, anda perlu mengisi semula dari awal.\n\nAdakah anda ingin meneruskan?");
+    
+    if (!confirmSend) {
+      return false; // Hentikan jika pengguna tekan batal
+    }
+// Tunjukkan overlay semasa hantar
+  const overlay = document.getElementById("loadingOverlay");
+  overlay.style.display = "flex";
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text())
+    .then(responseText => {
+      overlay.style.display = "none"; // Sembunyi overlay
+      alert("✅ Data berjaya dihantar!");
+      form.reset();
+    })
+    .catch(error => {
+      overlay.style.display = "none"; // Sembunyi overlay walau gagal
+      alert("❌ Gagal menghantar data. Sila cuba semula.");
+      console.error("Ralat:", error);
+    });
+
+    return false; // Halang submit default
+  }
+</script>
+<footer>
+    <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+    <p>Jalan Suka Menanti 05150 Alor Setar kedah Darul Aman</p>
+    <p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+    <p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+  </footer>
+  <div id="loadingOverlay">⏳ Sila tunggu sehingga proses penghantaran data selesai...</div>
+</body>
+</html>

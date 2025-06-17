@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KEMASKINI PO3</title>
+<style>
+  * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    header img {
+      height: 80px;
+    }
+
+    #datetime {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .navbar {
+      background-color: #ffffff22;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      border-radius: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+footer {
+      background-color: #000000cc;
+      color: #ddd;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .navbar a,
+      .dropdown .dropbtn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  main {
+    padding: 20px;
+    max-width: 700px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  label {
+    font-weight: bold;
+  }
+  .form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .btn {
+    padding: 10px 20px;
+    background-color: #017cba;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .btn:hover {
+    background-color: #015d8a;
+  }
+  @keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+}
+
+.fade-in-up.delay-1 { animation-delay: 0.2s; }
+.fade-in-up.delay-2 { animation-delay: 0.4s; }
+.fade-in-up.delay-3 { animation-delay: 0.6s; }
+.fade-in-up.delay-4 { animation-delay: 0.8s; }
+.fade-in-up.delay-5 { animation-delay: 1s; }
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="media/logo.png" alt="Logo Kiri">
+    <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+    <img src="media/logo1.png" alt="Logo Kanan">
+</header>
+<nav class="navbar">
+  <div style="display: flex; justify-content: center; flex: 1; gap: 10px;">
+    <a href="index.html">HALAMAN UTAMA</a>
+    <div class="dropdown">
+      <button class="dropbtn">PO3 ▾</button>
+      <div class="dropdown-content">
+        <a href="paparan.html">PAPARAN</a>
+        <a href="logistik.html">LOGISTIK</a>
+        <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+        <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">PGO ▾</button>
+      <div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+    </div>
+    <a href="panduan.html">PANDUAN</a>
+  </div>
+
+  <div style="margin-left: auto;">
+    <button onclick="logout()" style="padding: 10px 20px; background-color: #910000; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+      Log Keluar
+    </button>
+  </div>
+</nav>
+
+<main class="fade-in-up delay-1">
+  <h2 class="fade-in-up delay-2" style="text-align: center;">LAPORAN KEKUATAN PERSONEL DAN LOGISTIK NEGERI (12JAM)</h2>
+  <form class="fade-in-up delay-3" action="https://script.google.com/macros/s/AKfycbyvnYAiHREgkDHXu2CdbAnpxU7hrvlQb54xuojLx6Gde1ifh6sNFdXkvJWsORj1eocF2A/exec" method="post" onsubmit="return handleSubmit(this);">
+    
+    <label for="PPK">PENYELIA PGO KEDAH:</label>
+    <input class="form-control" name="PPK" type="text" required />
+
+    <label for="MASA1">MASA:</label>
+    <select class="form-control" name="MASA1" required>
+      <option value="">-</option>
+      <option value="0800">0800</option>
+      <option value="2000">2000</option>
+    </select>
+
+    <label for="HINGGA1">HINGGA:</label>
+    <select class="form-control" name="HINGGA1" required>
+      <option value="">-</option>
+      <option value="0800">0800</option>
+      <option value="2000">2000</option>
+    </select>
+
+    <label for="TARIKH1">TARIKH:</label>
+    <input class="form-control" name="TARIKH1" type="date" required />
+
+    <label for="PASUKAN1">PASUKAN:</label>
+    <select class="form-control" name="PASUKAN1" required>
+      <option value="">-</option>
+      <option value="PASUKAN A">PASUKAN A</option>
+      <option value="PASUKAN B">PASUKAN B</option>
+      <option value="PASUKAN C">PASUKAN C</option>
+    </select>
+
+    <input type="hidden" name="formType" value="pgo" />
+    <input type="hidden" name="sheetName" value="PGO ( HQ )" />
+
+    <div class="text-center fade-in-up delay-4">
+      <button class="btn" type="submit">HANTAR</button>
+    </div>
+  </form>
+</main>
+<script>
+  
+  function handleSubmit(form) {
+    // Tunjukkan overlay semasa hantar
+  const overlay = document.getElementById("loadingOverlay");
+  overlay.style.display = "flex";
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.text())
+    .then(responseText => {
+      overlay.style.display = "none";
+      alert("✅ Data berjaya dihantar!");
+      form.reset();
+    })
+    .catch(error => {
+      overlay.style.display = "none";
+      alert("❌ Gagal menghantar data. Sila cuba semula.");
+      console.error("Ralat:", error);
+    });
+    return false;
+  
+  }
+ 
+</script>
+  <script>
+  const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
+  const loggedUser = localStorage.getItem("user");
+
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");{
+    localStorage.setItem("redirectAfterLogin", "kemaskinipo3.html");
+    window.location.href = "login.html";
+    }
+    window.location.href = "login.html";
+  }
+
+function logout() {
+  localStorage.removeItem('user');
+  window.location.href = 'login.html';
+}
+let warningTimeout;
+  let logoutTimeout;
+  let countdownInterval;
+
+  function showCountdownDialog() {
+    let countdown = 60;
+    const countdownBox = document.createElement("div");
+    countdownBox.id = "countdown-box";
+    countdownBox.innerHTML = `
+      <div style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+                  background-color: rgba(0,0,0,0.9); color: white; padding: 30px 40px;
+                  border-radius: 12px; text-align: center; z-index: 10000; box-shadow: 0 0 10px black;">
+        ⚠️ Anda akan dilog keluar dalam <span id="countdown-timer">60</span> saat kerana tiada aktiviti.
+        <br><br>
+        <button onclick="cancelLogout()" style="margin-top:10px; padding: 10px 20px; background-color: #0099cc;
+                border: none; color: white; border-radius: 8px; cursor: pointer;">Saya masih di sini</button>
+      </div>
+    `;
+    document.body.appendChild(countdownBox);
+
+    countdownInterval = setInterval(() => {
+      countdown--;
+      const timer = document.getElementById("countdown-timer");
+      if (timer) timer.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        logout();
+      }
+    }, 1000);
+  }
+
+  function cancelLogout() {
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+    resetAutoLogoutTimer();
+  }
+
+  function resetAutoLogoutTimer() {
+    clearTimeout(warningTimeout);
+    clearTimeout(logoutTimeout);
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+
+    // Amaran selepas 2 minit (120000 ms)
+    warningTimeout = setTimeout(() => {
+      showCountdownDialog();
+    }, 240000);
+
+    // Auto logout selepas 3 minit (180000 ms)
+    logoutTimeout = setTimeout(() => {
+      logout();
+    }, 300000);
+  }
+
+  ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, resetAutoLogoutTimer);
+  });
+
+  resetAutoLogoutTimer();
+</script>
+<footer>
+    <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+    <p>Jalan Suka Menanti 05150 Alor Setar kedah Darul Aman</p>
+    <p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+    <p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+  </footer>
+  <div id="loadingOverlay">
+  ⏳ Sila tunggu sehingga proses penghantaran data selesai...
+</div>
+</body>
+</html>

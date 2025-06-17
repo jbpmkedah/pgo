@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paparan PO3 - BBP ALOR SETAR</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    header img {
+      height: 80px;
+    }
+
+    .navbar {
+      background-color: #ffffff22;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      border-radius: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    footer {
+      background-color: #000000cc;
+      color: #ddd;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .navbar a,
+      .dropdown .dropbtn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 800px;
+      height: calc(100vh - 200px);
+      border: none;
+    }
+
+    @keyframes slide-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideUp 0.6s forwards;
+}
+
+.fade-in-up.delay-1 { animation-delay: 0.2s; }
+.fade-in-up.delay-2 { animation-delay: 0.4s; }
+.fade-in-up.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <a href="index.html">
+      <img src="media/logo.png" alt="Logo Kiri">
+    </a>
+  </div>
+  <h1 style="margin: 0; flex-grow: 1; text-align: center;">JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+  <div style="display: flex; align-items: center;">
+    <img src="media/logo1.png" alt="Logo Kanan" style="height: 80px;">
+  </div>
+</header>
+
+<nav class="navbar">
+  <div style="display: flex; justify-content: center; flex: 1; gap: 10px;">
+    <a href="index.html">HALAMAN UTAMA</a>
+    <div class="dropdown">
+      <button class="dropbtn">PO3 ▾</button>
+      <div class="dropdown-content">
+        <a href="paparan.html">PAPARAN</a>
+        <a href="logistik.html">LOGISTIK</a>
+        <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+        <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">PGO ▾</button>
+      <div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+    </div>
+    <a href="panduan.html">PANDUAN</a>
+  </div>
+  <div style="margin-left: auto;">
+    <button onclick="logout()" style="padding: 10px 20px; background-color: #910000; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+      Log Keluar
+    </button>
+  </div>
+</nav>
+
+<main>
+  <h2 class="fade-in-up delay-1" style="text-align: center;">LAPORAN KEKUATAN PERSONEL DAN LOGISTIK NEGERI (12JAM)</h2>
+
+  <div class="fade-in-up delay-2" style="text-align: center; margin-top: 20px;">
+    <a class="btn-download" download href="https://docs.google.com/spreadsheets/d/1xlYUAAtaFA7MdeqZbCN8EJgT8vvI7bk80akG6tjX4VE/export?format=xlsx">
+      <button style="padding: 10px 20px; background-color: #034055; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+        📥 Muat Turun Data PGO (HQ) [.xlsx]
+      </button>
+    </a>
+  </div>
+
+  <br>
+
+  <div class="fade-in-up delay-3">
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR-GHEeToKnURaq8Y6hFTjz2YCaoXejgpyKc1gms_gphYaFiBKJG4Wq7EYx3Gt1b2b8OFHD5viV7k5Z/pubhtml?gid=1830052198&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+  <p>Jalan Suka Menanti 05150 Alor Setar Kedah Darul Aman</p>
+  <p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+  <p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+</footer>
+
+<script>
+ const allowedUsers = ["admin"];
+  const loggedUser = localStorage.getItem("user");
+
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");{
+    localStorage.setItem("redirectAfterLogin", "muatturun.html");
+    window.location.href = "login.html";
+    }
+    window.location.href = "login.html";
+  }
+
+  function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+  }
+
+  // Auto logout logic
+  let warningTimeout;
+  let logoutTimeout;
+  let countdownInterval;
+
+  function showCountdownDialog() {
+    let countdown = 60;
+    const countdownBox = document.createElement("div");
+    countdownBox.id = "countdown-box";
+    countdownBox.innerHTML = `
+      <div style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+                  background-color: rgba(0,0,0,0.9); color: white; padding: 30px 40px;
+                  border-radius: 12px; text-align: center; z-index: 10000; box-shadow: 0 0 10px black;">
+        ⚠️ Anda akan dilog keluar dalam <span id="countdown-timer">60</span> saat kerana tiada aktiviti.
+        <br><br>
+        <button onclick="cancelLogout()" style="margin-top:10px; padding: 10px 20px; background-color: #0099cc;
+                border: none; color: white; border-radius: 8px; cursor: pointer;">Saya masih di sini</button>
+      </div>
+    `;
+    document.body.appendChild(countdownBox);
+
+    countdownInterval = setInterval(() => {
+      countdown--;
+      document.getElementById("countdown-timer").textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        logout();
+      }
+    }, 1000);
+  }
+
+  function cancelLogout() {
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+    resetAutoLogoutTimer();
+  }
+
+  function resetAutoLogoutTimer() {
+    clearTimeout(warningTimeout);
+    clearTimeout(logoutTimeout);
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+
+    warningTimeout = setTimeout(() => {
+      showCountdownDialog();
+    }, 240000); // 4 minit tidak aktif
+
+    // Just in case, force logout after 4 mins
+    logoutTimeout = setTimeout(() => {
+      logout();
+    }, 300000); // 5 minit
+  }
+
+  ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, resetAutoLogoutTimer);
+  });
+
+  resetAutoLogoutTimer();
+</script>
+
+</body>
+</html>

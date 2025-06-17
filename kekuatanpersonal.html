@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KEKUATAN PERSONEL PO3</title>
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    header h1 {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    header img {
+      height: 80px;
+    }
+
+    #datetime {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .navbar {
+      background-color: #ffffff22;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      border-radius: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+footer {
+      background-color: #000000cc;
+      color: #ddd;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .navbar a,
+      .dropdown .dropbtn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    h3, h5 {
+      text-align: center;
+    }
+
+    form {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin: 20px;
+    }
+
+    label, select, input {
+      margin: 10px;
+      padding: 5px;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      font-size: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+      color: black;
+      font-size: 10px;
+    }
+
+    table th, table td {
+      padding: 4px;
+      text-align: center;
+      border: 1px solid #000000;
+    }
+
+    table th {
+      background-color: #017cba;
+      color: rgb(0, 0, 0);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 15px;
+      padding: 10px;
+      text-align: center;
+      margin: 0;
+    }
+
+    .btn-primary {
+      background-color: #034055;
+      color: white;
+      border:#000000;
+      padding: 10px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-primary:hover {
+      background-color: #01455c;
+    }
+  
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 1200px) {
+  table input[type="number"] {
+    width: 2.5vw;
+    font-size: 1.2vw;
+  }
+  table th, table td {
+    padding: 2px;
+    font-size: 1vw;
+  }
+}
+@media screen and (max-width: 768px) {
+  table input[type="number"] {
+    width: 3vw;
+    font-size: 1.8vw;
+  }
+  table th, table td {
+    padding: 1px;
+    font-size: 1.5vw;
+  }
+}
+
+    table input[type="number"] {
+      width: 35px !important;
+      font-size: 10px !important;
+      padding: 2px;
+      text-align: center;
+    }
+
+    table th, table td {
+      border: 0.5px solid #666 !important;
+      padding: 3px !important;
+    }
+
+    @media screen and (max-width: 1200px) {
+      table input[type="number"] {
+        width: 3vw !important;
+        font-size: 1.3vw !important;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      table input[type="number"] {
+        width: 4vw !important;
+        font-size: 2vw !important;
+      }
+    }
+    
+table input[type="number"] {
+  width: 22px !important;
+  font-size: 9px !important;
+  padding: 1px !important;
+  text-align: center;
+}
+
+table th, table td {
+  padding: 1px !important;
+  height: 22px !important;
+  font-size: 9px !important;
+}
+
+@media screen and (max-width: 1200px) {
+  table input[type="number"] {
+    width: 2.5vw !important;
+    font-size: 1.1vw !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  table input[type="number"] {
+    width: 3vw !important;
+    font-size: 1.7vw !important;
+  }
+}
+
+table input[type="number"] {
+  font-size: 14px !important;
+}
+
+        table, table th, table td {
+            font-size: 12px !important;
+        }
+        table input[type="number"] {
+            font-size: 14px !important;
+        }
+        @keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-up {
+  opacity: 0;
+  animation: fadeSlideUp 0.6s ease forwards;
+}
+
+.fade-slide-up-delay-1 { animation-delay: 0.2s; }
+.fade-slide-up-delay-2 { animation-delay: 0.4s; }
+.fade-slide-up-delay-3 { animation-delay: 0.6s; }
+.fade-slide-up-delay-4 { animation-delay: 0.8s; }
+.fade-slide-up-delay-5 { animation-delay: 0.10s; }
+.fade-slide-up-delay-6 { animation-delay: 0.12s; }
+
+#loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+    </style>
+</head>
+<body>
+<header>
+<img src="media/logo.png" alt="Logo Kiri">
+    <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+    <img src="media/logo1.png" alt="Logo Kanan">
+</header>
+<nav class="navbar">
+<a href="index.html">HALAMAN UTAMA</a>
+<div class="dropdown">
+<button class="dropbtn">PO3 ▾</button>
+<div class="dropdown-content">
+ <a href="paparan.html">PAPARAN</a>
+        <a href="logistik.html">LOGISTIK</a>
+        <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+        <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+</div>
+</div>
+<div class="dropdown">
+<button class="dropbtn">PGO ▾</button>
+      <div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+</div>
+<a href="panduan.html">PANDUAN</a>
+</nav>
+<h3 class="fade-slide-up fade-slide-up-delay-1" style="text-align: center;">LAPORAN KEKUATAN PERSONEL NEGERI KEDAH (12JAM)</h3>
+<h5 class="fade-slide-up fade-slide-up-delay-1" style="text-align: end;">Format PO3</h5>
+<form id="myForm" action="https://script.google.com/macros/s/AKfycbyvnYAiHREgkDHXu2CdbAnpxU7hrvlQb54xuojLx6Gde1ifh6sNFdXkvJWsORj1eocF2A/exec" method="post" onsubmit="return handleSubmit(this);">
+<input name="formType" type="hidden" value="personal"/>
+<label class="fade-slide-up fade-slide-up-delay-1" for="sheetName">BALAI : </label>
+<select class="fade-slide-up fade-slide-up-delay-2" name="sheetName" required="">
+<option selected="" value="">Sila Pilih</option>
+<option value="AST 01">BBP ALOR SETAR</option>
+<option value="LKW 02">BBP LANGKAWI</option>
+<option value="JTR 03">BBP JITRA</option>
+<option value="JRJ 04">BBP JALAN RAJA</option>
+<option value="GCK 05">BBP GUAR CEMPEDAK</option>
+<option value="SGP 06">BBP SUNGAI PETANI</option>
+<option value="BLG 07">BBP BALING</option>
+<option value="KLM 08">BBP KULIM</option>
+<option value="TBT 09">BBP TIKAM BATU</option>
+<option value="SIK 010">BBP SIK</option>
+<option value="KNG 011">BBP KUALA NERANG</option>
+<option value="BKH 012">BBP BUKIT KAYU HITAM</option>
+<option value="SDG 013">BBP SERDANG</option>
+<option value="KHT 014">BBP KULIM HITECH</option>
+<option value="LPP 015">BBP PERSIARAN PUTRA</option>
+<option value="YAN 016">BBP YAN</option>
+<option value="AMJ 017">BBP AMANJAYA</option>
+<option value="PDG 018">BBP PENDANG</option>
+<option value="PSN 019">BBP POKOK SENA</option>
+<option value="PMS 020">BBP PADANG MAT SIRAT</option>
+</select>
+
+    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MASA : <select class="fade-slide-up fade-slide-up-delay-2" class="form-control" name="MASA">
+<option value="-">-</option>
+<option value="0800">0800</option>
+<option value="2000">2000</option>
+</select>
+        
+      HINGGA : <select class="fade-slide-up fade-slide-up-delay-2" class="form-control" name="HINGGA">
+<option value="-">-</option>
+<option value="0800">0800</option>
+<option value="2000">2000</option>
+</select>
+                              
+      TARIKH :  <input class="fade-slide-up fade-slide-up-delay-2" class="form-control" name="TARIKH" type="date"/>
+        
+      PASUKAN : <select class="fade-slide-up fade-slide-up-delay-2" class="fade-slide-up fade-slide-up-delay-2" class="form-control" name="PASUKAN">
+         
+      <option class="fade-slide-up fade-slide-up-delay-2" selected="" value="-">-</option>
+<option value="PASUKAN A">PASUKAN A</option>
+<option value="PASUKAN B">PASUKAN B</option>
+<option value="PASUKAN C">PASUKAN C</option>
+</select>
+<p class="fade-slide-up fade-slide-up-delay-3">KETUA BALAI             : <input name="KETUA_BALAI" size="50" type="text" placeholder="Taip nama Ketua Balai di sini"/></p>
+<p class="fade-slide-up fade-slide-up-delay-4">PENYELIA PASUKAN : <input class="form-control" name="PENYELIA_PASUKAN" size="50" type="text" placeholder="Taip nama Penyelia Pasukan di sini"/></p>
+     <table class="fade-slide-up fade-slide-up-delay-5" align="center" border="2" cellpadding="10" cellspacing="2" class="form-control">
+<tr>
+<th rowspan="2" style="background-color:bisque; padding: 2px; font-size: 9px;">GRED</th>
+<th colspan="4" style="background-color:aqua; padding: 2px; font-size: 9px;">PEMADAM</th>
+<th colspan="4" style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">RIM</th>
+<th colspan="4" style="background-color:aqua; padding: 2px; font-size: 9px;">HAZMAT</th>
+<th colspan="4" style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">PPDA</th>
+<th colspan="4" style="background-color:aqua; padding: 2px; font-size: 9px;">EMRS</th>
+<th colspan="4" style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">STORM/MUST</th>
+<th colspan="4" style="background-color:aqua; padding: 2px; font-size: 9px;">BREAKDOWN</th>
+</tr>
+<tr>
+<!--<th>GRED</th>/-->
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">A</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">C</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;">CS</th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;">TK</th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 8</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB8C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB8A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB8C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB8CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB8TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 7</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB7A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB7C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB7CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB7TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 6</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB6A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB6C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB6CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB6TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB6A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB6C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB6CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB6TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB6A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB6C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB6CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB6TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB6A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB6C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB6CS" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB6TK" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB6A" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB6C" required="required" size="1" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB6CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB6TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB6A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB6C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB6CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB6TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB6A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB6C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB6CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB6TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 5</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB5A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB5C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB5CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB5TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 4</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB4A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB4C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB4CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB4TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 3</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 3 KUP</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB3KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 2</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 2 KUP</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2KUPA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2KUPC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2KUPCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB2KUPTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">KB 1</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB1A" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB1C" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB1CS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNKB1TK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+<tr>
+<th style="background-color:bisque; padding: 2px; font-size: 9px;">PBB</th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PEMADAMPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="RIMPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="HAZMATPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="PPDAPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="EMRSPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="STORMPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNPBBA" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNPBBC" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:aqua; padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNPBBCS" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+<th style="background-color:rgb(0, 200, 255); padding: 2px; font-size: 9px;"><input class="form-control" min="0" name="BREAKDOWNPBBTK" required="required" size="2" style="width: 25px; text-align: center; font-size: 8px; appearance: textfield; -moz-appearance: textfield; -webkit-appearance: none;" type="number" value="0"/></th>
+</tr>
+</tr></tr></table>
+<br/><br/>
+<div class="text-center">
+<button class="btn btn-primary" type="submit">HANTAR</button>
+</div>
+</form>
+<script>
+  document.getElementById("myForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // Hentikan hantar secara biasa
+
+  const confirmation = confirm("sebelum menghantar maklumat, sila pastikan bahawa maklumat yang dimasukkan adalah tepat. Jika terdapat sebarang perubahan selepas penghantaran, anda perlu mengisi semula dari awal.\n\nAdakah anda ingin meneruskan?");
+  
+  if (confirmation) {
+
+    // Tunjukkan overlay semasa hantar
+  const overlay = document.getElementById("loadingOverlay");
+  overlay.style.display = "flex";
+  
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    fetch(form.action, {
+      method: "POST",
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        overlay.style.display = "none"; // Sembunyi overlay
+        alert("✅ Data berjaya dihantar!");
+        form.reset(); // Kosongkan borang jika perlu
+      } else {
+        overlay.style.display = "none"; // Sembunyi overlay
+        alert("❌ Gagal menghantar data.");
+      }
+    })
+    .catch(error => {
+      overlay.style.display = "none"; // Sembunyi overlay walau gagal
+      alert("❌ Ralat semasa menghantar data: " + error.message);
+    });
+  }
+});
+
+</script>
+<footer>
+    <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+    <p>Jalan Suka Menanti 05150 Alor Setar kedah Darul Aman</p>
+    <p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+    <p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+  </footer>
+  <div id="loadingOverlay">⏳ Sila tunggu sebentar sehingga proses penghantaran data selesai...</div>
+</body>
+</html>

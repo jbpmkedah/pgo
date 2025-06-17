@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Status Kemaskini PO3</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #017cba, #000001);
+      color: white;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    header h1 { font-size: 24px; text-align: center; flex-grow: 1; }
+    header img { height: 80px; }
+    .navbar {
+      background-color: #ffffff22;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      align-items: center;
+    }
+    .navbar a,
+    .dropdown .dropbtn {
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .navbar a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #0191a7;
+      border-radius: 8px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #0191a7;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      display: block;
+      text-align: left;
+    }
+    .dropdown-content a:hover {
+      background-color: #01455c;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    footer {
+      background-color: #000000cc;
+      color: #ddd;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    main { padding: 20px; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      background: white;
+      color: black;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th { background-color: #f2f2f2; }
+    .lengkap { background-color: #c8f7c5; }
+    .belum { background-color: #f7c5c5; }
+    #summaryText {
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .summary-lengkap { color: #00ff00; }
+    .summary-belum { color: #ff5555; }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .info-button, .zero-button, .clear-button {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .info-button { background-color: #ffcc00; color: black; }
+    .zero-button { background-color: #007bff; color: white; }
+    .clear-button { background-color: red; color: white; }
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.6s forwards;
+    }
+    .fade-in-up.delay-1 { animation-delay: 0.2s; }
+    .fade-in-up.delay-2 { animation-delay: 0.4s; }
+    .fade-in-up.delay-3 { animation-delay: 0.6s; }
+    .fade-in-up.delay-4 { animation-delay: 0.8s; }
+    .fade-in-up.delay-5 { animation-delay: 1s; }
+    @keyframes fadeSlideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="media/logo.png" alt="Logo Kiri">
+    <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+    <img src="media/logo1.png" alt="Logo Kanan">
+  </header>
+  <nav class="navbar">
+  <div style="display: flex; justify-content: center; flex: 1; gap: 10px;">
+    <a href="index.html">HALAMAN UTAMA</a>
+    <div class="dropdown">
+      <button class="dropbtn">PO3 ▾</button>
+      <div class="dropdown-content">
+        <a href="paparan.html">PAPARAN</a>
+        <a href="logistik.html">LOGISTIK</a>
+        <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+        <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">PGO ▾</button>
+      <div class="dropdown-content">
+        <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+        <a href="muatturun.html">MUAT TURUN</a>
+        <a href="data.html">STATUS KEMASKINI</a>
+      </div>
+    </div>
+    <a href="panduan.html">PANDUAN</a>
+  </div>
+
+  <div style="margin-left: auto;">
+    <button onclick="logout()" style="padding: 10px 20px; background-color: #910000; color: white; border: none; border-radius: 8px; font-size: 14px; cursor: pointer;">
+      Log Keluar
+    </button>
+  </div>
+</nav>
+  <main>
+  <h2 class="fade-in-up delay-1" style="text-align: center;">STATUS KEMASKINI PO3</h2>
+
+  <p id="summaryText" class="fade-in-up delay-2"></p>
+
+  <table id="statusTable" class="fade-in-up delay-3">
+    <thead>
+      <tr>
+        <th>Kod Balai</th>
+        <th>Kekuatan Personel</th>
+        <th>Logistik</th>
+        <th>Pergerakan Logistik</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  
+    </div>
+  </div>
+
+  <div class="button-row fade-in-up delay-4" style="gap:10px; justify-content:center;">
+    <button class="info-button" style="background-color: #ffcc00;" onclick="clearLogSheet()">PADAM SEMUA DATA LOG</button>
+  </div>
+
+  <div class="button-row fade-in-up delay-5" style="gap:10px; justify-content:center;">
+    
+    <button class="zero-button" style="background-color:#007bff;" onclick="padamPersonel()">PADAM KEKUATAN PERSONEL</button>
+    <button class="zero-button" style="background-color:#007bff;" onclick="padamLogistik()">PADAM LOGISTIK</button>
+    <button class="zero-button" style="background-color:#007bff;" onclick="padamPergerakan()">PADAM PERGERAKAN LOGISTIK</button>
+    
+  </div>
+
+<div class="button-row fade-in-up delay-6" style="justify-content:center; margin-top:30px;">
+  <button class="clear-button" style="background-color:red;" onclick="padamSemua()">PADAM SEMUA DATA BALAI</button>
+</div>
+
+</main>
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyvnYAiHREgkDHXu2CdbAnpxU7hrvlQb54xuojLx6Gde1ifh6sNFdXkvJWsORj1eocF2A/exec";
+
+    fetch(scriptURL)
+      .then(response => response.json())
+      .then(data => renderTable(data));
+
+    function renderTable(data) {
+      const balaiList = [
+        "AST 01", "LKW 02", "JTR 03", "JRJ 04", "GCK 05",
+        "SGP 06", "BLG 07", "KLM 08", "TBT 09", "SIK 010",
+        "KNG 011", "BKH 012", "SDG 013", "KHT 014", "LPP 015",
+        "YAN 016", "AMJ 017", "PDG 018", "PSN 019", "PMS 020"
+      ];
+
+      const statusMap = {};
+      balaiList.forEach(balai => {
+        statusMap[balai] = { personal: false, logistik: false, pergerakan: false };
+      });
+
+      data.forEach(row => {
+        const balai = row.balai?.trim().toUpperCase();
+        const borang = row.borang?.trim().toLowerCase();
+        if (statusMap[balai]) {
+          if (borang === "kekuatan personel") statusMap[balai].personal = true;
+          if (borang === "logistik") statusMap[balai].logistik = true;
+          if (borang === "pergerakan") statusMap[balai].pergerakan = true;
+        }
+      });
+
+      let lengkapCount = 0;
+      const tbody = document.querySelector("#statusTable tbody");
+      tbody.innerHTML = "";
+
+      balaiList.forEach(balai => {
+        const status = statusMap[balai];
+        const penuh = status.personal && status.logistik && status.pergerakan;
+        if (penuh) lengkapCount++;
+        const row = document.createElement("tr");
+        row.className = penuh ? "lengkap" : "belum";
+        row.innerHTML = `
+          <td>${balai}</td>
+          <td>${status.personal ? "✅" : "❌"}</td>
+          <td>${status.logistik ? "✅" : "❌"}</td>
+          <td>${status.pergerakan ? "✅" : "❌"}</td>
+          <td>${penuh ? "Lengkap" : "Belum Lengkap"}</td>
+          `;
+        tbody.appendChild(row);
+      });
+
+      const percent = Math.round((lengkapCount / balaiList.length) * 100);
+      const summary = document.getElementById("summaryText");
+      summary.textContent = `Jumlah Balai Lengkap: ${lengkapCount} / ${balaiList.length} (${percent}%)`;
+      summary.className = (percent === 100) ? "summary-lengkap" : "summary-belum";
+    }
+
+    function clearLogSheet() {
+  const confirmLog = confirm(
+    "Apabila anda klick pada butang PADAM SEMUA DATA LOG bermaksud segala data log di dalam jadual yang dipaparkan akan padam sepenuhnya. Adakah anda ingin teruskan?"
+  );
+
+  if (!confirmLog) return;
+
+  fetch(scriptURL + "?clearLog=true")
+    .then(response => response.text())
+    .then(data => {
+      alert("Data Log telah dikosongkan.");
+      location.reload();
+    })
+    .catch(error => {
+      alert("Gagal kosongkan log: " + error);
+    });
+  }
+    
+
+    
+    const allowedUsers = ["admin"]; // Tambah ID lain jika perlu
+    const loggedUser = localStorage.getItem("user");
+
+  if (!loggedUser || !allowedUsers.includes(loggedUser)) {
+    alert("Akses tidak dibenarkan. Sila log masuk.");{
+    localStorage.setItem("redirectAfterLogin", "data.html");
+    window.location.href = "login.html";
+    }
+    window.location.href = "login.html";
+  }
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+let warningTimeout;
+  let logoutTimeout;
+  let countdownInterval;
+
+  function showCountdownDialog() {
+    let countdown = 60;
+    const countdownBox = document.createElement("div");
+    countdownBox.id = "countdown-box";
+    countdownBox.innerHTML = `
+      <div style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%);
+                  background-color: rgba(0,0,0,0.9); color: white; padding: 30px 40px;
+                  border-radius: 12px; text-align: center; z-index: 10000; box-shadow: 0 0 10px black;">
+        ⚠️ Anda akan dilog keluar dalam <span id="countdown-timer">60</span> saat kerana tiada aktiviti.
+        <br><br>
+        <button onclick="cancelLogout()" style="margin-top:10px; padding: 10px 20px; background-color: #0099cc;
+                border: none; color: white; border-radius: 8px; cursor: pointer;">Saya masih di sini</button>
+      </div>
+    `;
+    document.body.appendChild(countdownBox);
+
+    countdownInterval = setInterval(() => {
+      countdown--;
+      const timer = document.getElementById("countdown-timer");
+      if (timer) timer.textContent = countdown;
+      if (countdown <= 0) {
+        clearInterval(countdownInterval);
+        logout();
+      }
+    }, 1000);
+  }
+
+  function cancelLogout() {
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+    resetAutoLogoutTimer();
+  }
+
+  function resetAutoLogoutTimer() {
+    clearTimeout(warningTimeout);
+    clearTimeout(logoutTimeout);
+    clearInterval(countdownInterval);
+    const box = document.getElementById("countdown-box");
+    if (box) box.remove();
+
+    // Amaran selepas 4 minit (120000 ms)
+    warningTimeout = setTimeout(() => {
+      showCountdownDialog();
+    }, 240000);
+
+    // Auto logout selepas 5 minit (180000 ms)
+    logoutTimeout = setTimeout(() => {
+      logout();
+    }, 300000);
+  }
+
+  ['mousemove', 'keydown', 'click', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, resetAutoLogoutTimer);
+  });
+
+  resetAutoLogoutTimer();
+  
+const balaiList = [
+  "AST 01", "LKW 02", "JTR 03", "JRJ 04", "GCK 05",
+  "SGP 06", "BLG 07", "KLM 08", "TBT 09", "SIK 010",
+  "KNG 011", "BKH 012", "SDG 013", "KHT 014", "LPP 015",
+  "YAN 016", "AMJ 017", "PDG 018", "PSN 019", "PMS 020"
+];
+
+
+
+
+
+
+
+function showProgressBar() {
+  document.getElementById("progressContainer").style.display = "block";
+  document.getElementById("progressBar").style.width = "0%";
+  document.getElementById("progressBar").innerText = "0%";
+  document.getElementById("progressText").innerText = "Sila tunggu proses selesai...";
+}
+
+function updateProgressBar(percent) {
+  const progressBar = document.getElementById("progressBar");
+  progressBar.style.width = percent + "%";
+  progressBar.innerText = percent + "%";
+}
+
+async function padamPersonel() {
+  if (!confirm("Apabila anda menekan butang PADAM KEKUATAN PERSONEL, ini bermakna semua maklumat mengenai kekuatan personel akan dihapuskan sepenuhnya.\n\nProses ini akan mengambil sedikit masa, sekitar 1-2 minit, untuk menyelesaikan pengosongan data. Anda akan menerima notifikasi setelah proses berakhir.\n\nSelepas itu klik pada butang PADAM SEMUA DATA LOG. \n\nAnda pasti untuk padam semua KEKUATAN PERSONEL?")) return;
+
+  showProgressBar();
+
+  const payload = {
+    formType: "personal",
+    MASA: "-", HINGGA: "-", TARIKH: new Date().toISOString().split("T")[0],
+    KETUA_BALAI: "-", PENYELIA_PASUKAN: "-", PASUKAN: "-"
+  };
+
+  for (let i = 0; i < balaiList.length; i++) {
+    const balai = balaiList[i];
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...payload, sheetName: balai })
+    });
+    const percent = Math.round(((i + 1) / balaiList.length) * 100);
+    updateProgressBar(percent);
+  }
+
+  document.getElementById("progressText").innerText = "✅ Semua data KEKUATAN PERSONEL telah dipadam.";
+  setTimeout(() => location.reload(), 1500);
+}
+
+async function padamLogistik() {
+  if (!confirm("Apabila anda menekan butang PADAM LOGISTIK, ini bermakna semua maklumat mengenai logistik akan dihapuskan sepenuhnya.\n\nProses ini akan mengambil sedikit masa, sekitar 1-2 minit, untuk menyelesaikan pengosongan data. Anda akan menerima notifikasi setelah proses berakhir.\n\nSelepas itu klik pada butang PADAM SEMUA DATA LOG. \n\nAnda pasti untuk padam semua LOGISTIK?")) return;
+
+  showProgressBar();
+
+  const payload = {
+    formType: "logistik",
+    FRT1: 0, FRT0: 0, LFRT1: 0, LFRT0: 0,
+    WT20L1: 0, WT20L0: 0, WT10L1: 0, WT10L0: 0,
+    ALP1: 0, ALP0: 0, HPPM1: 0, HPPM0: 0,
+    RIM1: 0, RIM0: 0, HAZMAT1: 0, HAZMAT0: 0,
+    BATANDER1: 0, BATANDER0: 0, RRV1: 0, RRV0: 0,
+    MCP1: 0, MCP0: 0, KOMUNIKASI1: 0, KOMUNIKASI0: 0,
+    KEMBALIK1: 0, KEMBALIK0: 0, EMRS1: 0, EMRS0: 0,
+    LT1: 0, LT0: 0, TTL1: 0, TTL0: 0, FRV1: 0, FRV0: 0,
+    CFRT1: 0, CFRT0: 0, LL1: 0, LL0: 0, FB1: 0, FB0: 0,
+    KEVLAR1: 0, KEVLAR0: 0, ALUMINIUM1: 0, ALUMINIUM0: 0,
+    ARIB1: 0, ARIB0: 0, JETSKI1: 0, JETSKI0: 0,
+    DINGHY1: 0, DINGHY0: 0, WHALY1: 0, WHALY0: 0,
+    HDPE1: 0, HDPE0: 0, LALA1: 0, LALA0: 0,
+    LORI1: 0, LORI0: 0, BAS401: 0, BAS400: 0,
+    BAS251: 0, BAS250: 0, X41: 0, X40: 0, VAN1: 0, VAN0: 0,
+    KEMBARA1: 0, KEMBARA0: 0, PAJERO1: 0, PAJERO0: 0,
+    LORII1: 0, LORII0: 0, LAILAI1: 0, LAILAI0: 0
+  };
+
+  for (let i = 0; i < balaiList.length; i++) {
+    const balai = balaiList[i];
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...payload, sheetName: balai })
+    });
+    const percent = Math.round(((i + 1) / balaiList.length) * 100);
+    updateProgressBar(percent);
+  }
+
+  document.getElementById("progressText").innerText = "✅ Semua data LOGISTIK telah dipadam.";
+  setTimeout(() => location.reload(), 1500);
+}
+
+async function padamPergerakan() {
+  if (!confirm("Apabila anda menekan butang PADAM PERGERAKAN LOGISTIK, ini bermakna semua maklumat mengenai pergerakan logistik akan dihapuskan sepenuhnya.\n\nProses ini akan mengambil sedikit masa, sekitar 1-2 minit, untuk menyelesaikan pengosongan data. Anda akan menerima notifikasi setelah proses berakhir.\n\nSelepas itu klik pada butang PADAM SEMUA DATA LOG. \n\nAnda pasti untuk padam semua PERGERAKAN LOGISTIK?")) return;
+
+  showProgressBar();
+
+  const payload = {
+    formType: "pergerakan",
+    JENTERA: "", BALAIASAL: "", BALAIPEMINJAM: ""
+  };
+
+  for (let i = 0; i < balaiList.length; i++) {
+    const balai = balaiList[i];
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...payload, sheetName: balai })
+    });
+    const percent = Math.round(((i + 1) / balaiList.length) * 100);
+    updateProgressBar(percent);
+  }
+
+  document.getElementById("progressText").innerText = "✅ Semua data PERGERAKAN LOGISTIK telah dipadam.";
+  setTimeout(() => location.reload(), 1500);
+}
+
+async function padamSemua() {
+  if (!confirm("Apabila anda menekan butang PADAM DATA BALAI, ini bermakna semua maklumat mengenai kekuatan personel, logistik dan pergerakan logistik akan dihapuskan sepenuhnya.\n\nProses ini akan mengambil sedikit masa, sekitar 2-4 minit, untuk menyelesaikan pengosongan data. Anda akan menerima notifikasi setelah proses berakhir.\n\nSelepas itu klik pada butang PADAM SEMUA DATA LOG. \n\nAnda pasti untuk PADAM SEMUA DATA BALAI?")) return;
+
+  showProgressBar();
+
+  const personalPayload = {
+    formType: "personal",
+    MASA: "-", HINGGA: "-", TARIKH: new Date().toISOString().split("T")[0],
+    KETUA_BALAI: "-", PENYELIA_PASUKAN: "-", PASUKAN: "-"
+  };
+
+  const logistikPayload = {
+    formType: "logistik",
+    FRT1: 0, FRT0: 0, LFRT1: 0, LFRT0: 0,
+    WT20L1: 0, WT20L0: 0, WT10L1: 0, WT10L0: 0,
+    ALP1: 0, ALP0: 0, HPPM1: 0, HPPM0: 0,
+    RIM1: 0, RIM0: 0, HAZMAT1: 0, HAZMAT0: 0,
+    BATANDER1: 0, BATANDER0: 0, RRV1: 0, RRV0: 0,
+    MCP1: 0, MCP0: 0, KOMUNIKASI1: 0, KOMUNIKASI0: 0,
+    KEMBALIK1: 0, KEMBALIK0: 0, EMRS1: 0, EMRS0: 0,
+    LT1: 0, LT0: 0, TTL1: 0, TTL0: 0, FRV1: 0, FRV0: 0,
+    CFRT1: 0, CFRT0: 0, LL1: 0, LL0: 0, FB1: 0, FB0: 0,
+    KEVLAR1: 0, KEVLAR0: 0, ALUMINIUM1: 0, ALUMINIUM0: 0,
+    ARIB1: 0, ARIB0: 0, JETSKI1: 0, JETSKI0: 0,
+    DINGHY1: 0, DINGHY0: 0, WHALY1: 0, WHALY0: 0,
+    HDPE1: 0, HDPE0: 0, LALA1: 0, LALA0: 0,
+    LORI1: 0, LORI0: 0, BAS401: 0, BAS400: 0,
+    BAS251: 0, BAS250: 0, X41: 0, X40: 0, VAN1: 0, VAN0: 0,
+    KEMBARA1: 0, KEMBARA0: 0, PAJERO1: 0, PAJERO0: 0,
+    LORII1: 0, LORII0: 0, LAILAI1: 0, LAILAI0: 0
+  };
+
+  const pergerakanPayload = {
+    formType: "pergerakan",
+    JENTERA: "", BALAIASAL: "", BALAIPEMINJAM: ""
+  };
+
+  for (let i = 0; i < balaiList.length; i++) {
+    const balai = balaiList[i];
+
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...logistikPayload, sheetName: balai })
+    });
+
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...personalPayload, sheetName: balai })
+    });
+
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new URLSearchParams({ ...pergerakanPayload, sheetName: balai })
+    });
+
+    const percent = Math.round(((i + 1) / balaiList.length) * 100);
+    updateProgressBar(percent);
+  }
+
+  document.getElementById("progressText").innerText = "✅ Semua data BALAI telah dipadam.";
+  setTimeout(() => location.reload(), 1500);
+}
+</script>
+ <footer>
+    <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+    <p>Jalan Suka Menanti 05150 Alor Setar kedah Darul Aman</p>
+    <p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+    <p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+  </footer>
+
+<!-- PROGRESS POPUP -->
+<div id="progressContainer" style="display:none; text-align:center; margin-top:30px; position:fixed; top:30%; left:50%; transform:translate(-50%,-50%); background:#222; padding:20px 30px; border-radius:10px; box-shadow:0 0 10px #000; z-index:9999;">
+  <p id="progressText" style="color:white; font-size:16px; margin-bottom:10px;">Sila tunggu proses selesai...</p>
+  <div style="width: 100%; background-color: #ddd; border-radius: 20px; overflow: hidden;">
+    <div id="progressBar" style="height: 30px; width: 0%; background-color: #28a745; text-align: center; line-height: 30px; color: white;">
+      0%
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
