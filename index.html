@@ -109,7 +109,7 @@ body::before {
       color: white;
       padding: 12px 16px;
       display: block;
-      text-align: left;
+      text-align: center;
     }
 
     .dropdown-content a:hover {
@@ -211,6 +211,77 @@ body::before {
   border-radius: 10px;
   border: 3px solid #ffffff33;
 }
+.intro-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 5px solid #054153;
+  padding: 30px 25px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 30px auto;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.intro-title {
+  font-size: 26px;
+  color: #00c4ff;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 1px 1px 3px black;
+}
+
+.intro-text {
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: #f0f0f0;
+  text-align: justify;
+}
+
+.intro-links {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro-links li {
+  margin: 10px 0;
+}
+
+.intro-links a {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #054153;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.intro-links a:hover {
+  background: #007a99;
+  transform: scale(1.05);
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.slide-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slide-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
   </style>
 </head>
 <body>
@@ -244,12 +315,25 @@ body::before {
     <a href="panduan.html">PANDUAN</a>
   </nav>
 
-  <main class="fade-in-up delay-1">
-    <p>
-      Laman web ini dibangunkan untuk memudahkan pengisian <strong>Laporan Kekuatan Personel dan Logistik Negeri (12 Jam) PO3</strong> oleh anggota di setiap balai. Sistem ini direka untuk memastikan maklumat diisi dengan tepat tanpa mengubah format asal laporan. Laporan PO3 terdiri daripada tiga komponen utama: <strong>KEKUATAN PERSONEL</strong>, <strong>LOGISTIK</strong>, dan <strong>PERGERAKAN LOGISTIK</strong>. Laporan ini wajib dikemaskini setiap kali pertukaran syif. Untuk maklumat lanjut, sila rujuk halaman <strong>PANDUAN</strong>.
+<main class="fade-in-up delay-1">
+  <section class="intro-box">
+    <h2 class="intro-title">Selamat datang ke Sistem Laporan PO3 Negeri Kedah</h2>
+    <p class="intro-text">
+      Laman web ini direka khas untuk memudahkan anggota balai dalam mengisi <em>Laporan Kekuatan Personel dan Logistik Negeri (12 Jam)</em> secara lebih teratur dan efisien.
+      Sistem ini mengekalkan format asal laporan, namun dipermudah untuk memastikan pengisian data yang tepat, cepat dan seragam di seluruh balai.
+      Laporan PO3 merangkumi tiga komponen utama:
     </p>
-
-  </main>
+    <ul class="intro-links">
+  <li class="fade-in-up delay-1"><a href="logistik.html"> LOGISTIK</a></li>
+  <li class="fade-in-up delay-2"><a href="kekuatanpersonal.html"> KEKUATAN PERSONEL</a></li>
+  <li class="fade-in-up delay-3"><a href="pergerakan.html"> PERGERAKAN LOGISTIK</a></li>
+</ul>
+    <p class="intro-text">
+      <strong>Kemaskini laporan adalah wajib setiap kali pertukaran syif.</strong>
+      Untuk panduan penggunaan sistem ini, sila rujuk halaman <a href="panduan.html"><strong>PANDUAN</strong></a> yang disediakan.
+    </p>
+  </section>
+</main>
 
  
 
