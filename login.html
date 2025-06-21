@@ -178,6 +178,35 @@
       text-decoration: underline;
     }
 
+    #loadingPopup .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .loading-spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #ffffff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     @media (max-width: 768px) {
       header h1 {
         font-size: 18px;
@@ -236,6 +265,14 @@
     </form>
   </div>
 
+  <!-- Popup Loading -->
+  <div id="loadingPopup" style="display: none;">
+    <div class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p>Sila tunggu... Sedang log masuk</p>
+    </div>
+  </div>
+
   <footer>
     <p>&copy; 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
     <p>Jalan Suka Menanti 05150 Alor Setar Kedah Darul Aman</p>
@@ -252,6 +289,8 @@
       const userId = document.getElementById("userId").value.trim();
       const password = document.getElementById("password").value.trim();
       const message = document.getElementById("message");
+      const loadingPopup = document.getElementById("loadingPopup");
+
       message.textContent = "";
 
       if (!userId || !password) {
@@ -259,20 +298,23 @@
         return;
       }
 
+      loadingPopup.style.display = "block";
       localStorage.setItem("user", userId);
 
       fetch(`${scriptURL}?user=${userId}&pass=${password}`)
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      const nextPage = localStorage.getItem("redirectAfterLogin") || "paparan.html";
-      localStorage.removeItem("redirectAfterLogin");
-      window.location.href = nextPage;
-    } else {
-      message.textContent = "ID atau katalaluan salah.";
-    }
-  })
+        .then(res => res.json())
+        .then(data => {
+          loadingPopup.style.display = "none";
+          if (data.success) {
+            const nextPage = localStorage.getItem("redirectAfterLogin") || "paparan.html";
+            localStorage.removeItem("redirectAfterLogin");
+            window.location.href = nextPage;
+          } else {
+            message.textContent = "ID atau katalaluan salah.";
+          }
+        })
         .catch(() => {
+          loadingPopup.style.display = "none";
           message.textContent = "Ralat sambungan ke pelayan.";
         });
     });
