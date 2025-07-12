@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Format PO7 (MENYELAMAT)</title>
+  <link rel="stylesheet" href="po7kebakaran.css">
+</head>
+<body>
+<header>
+  <img src="media/logo.png" alt="Logo Kiri" />
+  <h1>JABATAN BOMBA DAN PENYELAMAT MALAYSIA NEGERI KEDAH</h1>
+  <img src="media/logo1.png" alt="Logo Kanan" />
+</header>
+
+<div id="datetime"></div>
+
+<nav class="navbar">
+  <a href="index.html">HALAMAN UTAMA</a>
+  <div class="dropdown">
+    <button class="dropbtn">PO3 ▾</button>
+    <div class="dropdown-content">
+      <a href="paparan.html">PAPARAN</a>
+      <a href="logistik.html">LOGISTIK</a>
+      <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
+      <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">PGO ▾</button>
+    <div class="dropdown-content">
+      <div class="submenu">
+        <a href="#">PO7 ▸</a>
+        <div class="submenu-content">
+          <a href="po7kebakaran.html">KEBAKARAN</a>
+          <a href="po7menyelamat.html">MENYELAMAT</a>
+        </div>
+      </div>
+      <a href="kemaskinipo3.html">KEMASKINI PO3</a>
+      <a href="muatturun.html">MUAT TURUN</a>
+      <a href="data.html">STATUS KEMASKINI</a>
+    </div>
+  </div>
+  <a href="panduan.html">PANDUAN</a>
+</nav>
+
+<h1 style="text-align:center;">FORMAT PO7 (MENYELAMAT)</h1>
+
+<div class="form-card" style="overflow-x:auto;">
+  <form 
+    action="https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)" 
+    method="POST" id="borangPO7" onsubmit="return hantarForm();">
+    <table border="2" cellpadding="10" cellspacing="2">
+<tr>
+<th rowspan="2">BIL</th>
+<th rowspan="2">JENIS KEJADIAN, ALAMAT DAN NO.RUJUKAN</th>
+<th colspan="2">MASA TERIMA PANGGILAN</th>
+<th rowspan="2">KETERANGAN KEJADIAN</th>
+<th rowspan="2">JENTERA BALAI/PASUKAN YANG HADIR</th>
+</tr>
+<tr>
+<th>BALAI</th>
+<th>PGO</th>
+</tr>
+<tr>
+<th><input id="bil_display" readonly="" type="number"/></th>
+<th>
+<select id="selectJenis" onchange="pilihJenisKebakaran()">
+<option value="ANCAMAN TEBUAN">ANCAMAN TEBUAN</option>
+<option value="ANCAMAN LEBAH">ANCAMAN LEBAH</option>
+<option value="ANCAMAN ULAR">ANCAMAN ULAR</option>
+<option value="ANCAMAN BIAWAK">ANCAMAN BIAWAK</option>
+<option value="ANCAMAN MUSANG">ANCAMAN MUSANG</option>
+<option value="ANCAMAN MONYET">ANCAMAN MONYET</option>
+<option value="MENYELAMAT KUCING">MENYELAMAT KUCING</option>
+<option value="MENYELAMAT ANJING">MENYELAMAT ANJING</option>
+<option value="KEMALANGAN JALAN RAYA (BANTUAN KKM)">KEMALANGAN JALAN RAYA (BANTUAN KKM)</option>
+<option value="KEMALANGAN JALAN RAYA">KEMALANGAN JALAN RAYA</option>
+<option value="KERETA TERKUNCI">KERETA TERKUNCI</option>
+<option value="MANGSA TERKUNCI DALAM RUMAH">MANGSA TERKUNCI DALAM RUMAH</option>
+<option value="MANGSA TERKUNCI DALAM KERETA">MANGSA TERKUNCI DALAM KERETA</option>
+<option value="POTONG CINCIN">POTONG CINCIN</option>
+<option value="MANGSA LEMAS">MANGSA LEMAS</option>
+<option value="MANGSA HILANG">MANGSA HILANG</option>
+</select>
+<br/><br/>
+<input id="inputJenis" name="inputJenis" placeholder="Jenis kebakaran" required="" type="text" autocomplete="off"/>
+<br/><br/>
+<textarea id="alamat" name="alamat" placeholder="Alamat Kejadian" type="text" autocomplete="off"></textarea>
+<p>BIL :<input id="bilNombor" name="bilNombor" placeholder="Bil Negeri" required="" autocomplete="off" type="number"/> /2025</p>
+</th>
+<th><input id="masaBalai" maxlength="8" name="masaBalai" oninput="formatMasa(this)" placeholder="hh:mm:ss" type="text" autocomplete="off"/></th>
+<th><input id="masaPgo" maxlength="8" name="masaPgo" oninput="formatMasa(this)" placeholder="hh:mm:ss" type="text" autocomplete="off"/></th>
+<th>
+<select id="selectKeterangan" onchange="pilihKeterangan()">
+<option value="">SILA PILIH</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SARANG TEBUAN DI ATAS POKOK BERHAMPIRAN RUMAH PEMANGGIL. ANGGOTA BERTINDAK MENGGUNAKAN OBOR API UNTUK MEMUSNAHKAN SARANG TEBUAN TERSEBUT SEHINGGA SELESAI DAN MEMASTIKAN KEADAAN SELAMAT">ANCAMAN TEBUAN</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SARANG LEBAH DI ATAS POKOK BERHAMPIRAN RUMAH PEMANGGIL. ANGGOTA BERTINDAK MENGGUNAKAN OBOR API UNTUK MEMUSNAHKAN SARANG LEBAH TERSEBUT SEHINGGA SELESAI DAN MEMASTIKAN KEADAAN SELAMAT">ANCAMAN LEBAH</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR ULAR BERADA DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PENJERUT ULAR DAN BERJAYA MENANGKAP ULAR TERSEBUT. KEMUDIAN ANGGOTA MELEPASKAN SEMULA ULAR TERSEBUT KE HABITAT ASAL JAUH DARI KAWASAN ORANG AWAM.">ANCAMAN ULAR BERJAYA</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN MENDAPATI ULAR TELAH HILANG DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PENJERUT ULAR DAN MEMBUAT PENCARIAN SEHINGGA MENDAPATI ULAR TERSEBUT TELAH MENYUSUR KELUAR DARI RUMAH TERUS KE DALAM HUTAN. KEMUDIAN ANGGOTA MEMAKLUMKAN KEPADA PEMANGGIL UNTUK MENGHUBUNGI SEMULA JIKA ULAR TERSEBUT KEMBALI SEMULA.">ANCAMAN ULAR TIDAK BERJAYA</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR BIAWAK BERADA DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PENJERUT DAN BERJAYA MENANGKAP BIAWAK TERSEBUT. KEMUDIAN ANGGOTA MELEPASKAN SEMULA BIAWAK TERSEBUT KE HABITAT ASAL JAUH DARI KAWASAN ORANG AWAM.">ANCAMAN BIAWAK</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR MUSANG BERADA DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PENJERUT DAN BERJAYA MENANGKAP MUSANG TERSEBUT. KEMUDIAN ANGGOTA MELEPASKAN SEMULA MUSANG TERSEBUT KE HABITAT ASAL JAUH DARI KAWASAN ORANG AWAM.">ANCAMAN MUSANG</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR MONYET BERADA DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PENJERUT DAN BERJAYA MENANGKAP MONYET TERSEBUT. KEMUDIAN ANGGOTA MELEPASKAN SEMULA MONYET TERSEBUT KE HABITAT ASAL JAUH DARI KAWASAN ORANG AWAM.">ANCAMAN MONYET</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR KUCING BERADA DALAM KEADAAN BAHAYA DAN TIDAK DAPAT MENYELAMATKAN DIRI. ANGGOTA BERTINDAK MENANGKAP KUCING TERSEBUT DENGAN SELAMAT DAN MELEPASKAN SEMULA KE KAWASAN YANG SELAMAT.">MENYELAMAT KUCING</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEEKOR ANJING BERADA DALAM KEADAAN BAHAYA DAN TIDAK DAPAT MENYELAMATKAN DIRI. ANGGOTA BERTINDAK MENANGKAP ANJING TERSEBUT DENGAN SELAMAT DAN MELEPASKAN SEMULA KE KAWASAN YANG SELAMAT.">MENYELAMAT ANJING</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT KEMALANGAN JALAN RAYA MELIBATKAN ....... TERDAPAT MANGSA ....... MENGALAMI KECEDERAAN PADA ........ ANGGOTA BERTINDAK MEMBERIKAN RAWATAN AWAL KEPADA MANGSA. KEMUDIAN ANGGOTA MENGHANTAR MANGSA KE HOSPITAL MENGGUNAKAN EMRS UNTUK TINDAKAN KKM SELANJUTNYA.">KEMALANGAN JALAN RAYA</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEBUAH KERETA TERKUNCI. ANGGOTA BERTINDAK MENGGUNAKAN PERALATAN KHAS DAN BERJAYA MEMBUKA KUNCI PINTU KERETA TERSEBUT.">KERETA TERKUNCI</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEORANG KANAK-KANAK TERKUNCI DI DALAM SEBUAH KERETA. ANGGOTA BERTINDAK MENGGUNAKAN PERALATAN KHAS DAN BERJAYA MEMBUKA KUNCI PINTU KERETA TERSEBUT. KEMUDIAN KANAK-KANAK TERSEBUT DISERAHKAN KEPADA WARISNYA TANPA MENGALAMI SEBARANG KECEDERAAN.">MANGSA TERKUNCI DALAM KERETA</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEORANG KANAK-KANAK TERKUNCI DI DALAM RUMAH. ANGGOTA BERTINDAK MENGGUNAKAN PERALATAN KHAS DAN BERJAYA MEMBUKA KUNCI PINTU RUMAH TERSEBUT. KEMUDIAN KANAK-KANAK TERSEBUT DISERAHKAN KEPADA WARISNYA TANPA MENGALAMI SEBARANG KECEDERAAN.">MANGSA TERKUNCI DALAM RUMAH</option>
+<option value="SETIBANYA DI LOKASI KEJADIAN DIDAPATI BENAR TERDAPAT SEORANG MANGSA TERSEPIT CINCIN DI JARI. ANGGOTA BERTINDAK MENGGUNAKAN PERALATAN KHAS DAN BERJAYA MEMOTONG CINCIN TERSEBUT. MANGSA MENGALAMI KECEDERAAN RINGAN PADA JARI DAN DIBERIKAN RAWATAN AWAL SEBELUM MANGSA MENDAPATKAN RAWATAN SELANJUTNYA DI KLINIK KESIHATAN BERHAMPIRAN.">POTONG CINCIN</option>
+</select>
+<br/><br/>
+<textarea cols="80" id="inputKeterangan" name="inputKeterangan" placeholder="Masukkan Keterangan kejadian" required="" rows="6"></textarea>
+</th>
+<th>
+<select id="selectJentera" onchange="pilihJentera()">
+<option value="">SILA PILIH</option>
+<option value="K1-01, K2-01 ALOR SETAR">▸ BBP ALOR SETAR</option>
+<option value="K2-01 ALOR SETAR">EMRS AST</option>
+<option value="UTILITI ALOR SETAR">UTILITI AST</option>
+<option value="K1-27, K2-13 LANGKAWI">▸ BBP LANGKAWI</option>
+<option value="K2-13 LANGKAWI">EMRS LKW</option>
+<option value="UTILITI LANGKAWI">UTILITI LKW</option>
+<option value="K1-04, K2-03 JITRA">▸ BBP JITRA</option>
+<option value="K2-03 JITRA">EMRS JTR</option>
+<option value="UTILITI JITRA">UTILITI JTR</option>
+<option value="K1-03, JALAN RAJA">▸ BBP JALAN RAJA</option>
+<option value="UTILITI JALAN RAJA">UTILITI JRJ</option>
+<option value="K1-12, K2-06 GUAR CEMPEDAK">▸ BBP GUAR CEMPEDAK</option>
+<option value="K2-06 GUAR CEMPEDAK">EMRS GCK</option>
+<option value="UTILITI GUAR CEMPEDAK">UTILITI GCK</option>
+<option value="K1-10, K2-05 SUNGAI PETANI">▸ BBP SUNGAI PETANI</option>
+<option value="K2-05 SUNGAI PETANI">EMRS SGP</option>
+<option value="UTILITI SUNGAI PETANI">UTILITI SGP</option>
+<option value="K1-25, K2-11 BALING">▸ BBP BALING</option>
+<option value="K2-11 BALING">EMRS BLG</option>
+<option value="UTILITI BALING">UTILITI BALING</option>
+<option value="K1-20, K2-09 KULIM">▸ BBP KULIM</option>
+<option value="K2-09 KULIM">EMRS KLM</option>
+<option value="UTILITI KULIM">UTILITI KLM</option>
+<option value="K1-19, K2-08 TIKAM BATU">▸ BBP TIKAM BATU</option>
+<option value="K2-08 TIKAM BATU">EMRS TBT</option>
+<option value="UTILITI TIKAM BATU">UTILITI TBT</option>
+<option value="K1-14, K2-07 SIK">▸ BBP SIK</option>
+<option value="K2-07 SIK">EMRS TBT</option>
+<option value="UTILITI SIK">UTILITI SIK</option>
+<option value="K1-07, K2-10 KUALA NERANG">▸ BBP KUALA NERANG</option>
+<option value="K2-10 KUALA NERANG">EMRS KNG</option>
+<option value="UTILITI KUALA NERANG">UTILITI KNG</option>
+<option value="K1-08, K2-04 BUKIT KAYU HITAM">▸ BBP BUKIT KAYU HITAM</option>
+<option value="K2-04 BUKIT KAYU HITAM">EMRS BKH</option>
+<option value="UTILITI BUKIT KAYU HITAM">UTILITI BKH</option>
+<option value="K1-26, K2-12 SERDANG">▸ BBP SERDANG</option>
+<option value="K2-04 BUKIT KAYU HITAM">EMRS SDG</option>
+<option value="UTILITI BUKIT KAYU HITAM">UTILITI SDG</option>
+<option value="K1-21 KULIM HI TECH">▸ BBP KULI Hi TECH</option>
+<option value="UTILITI KULIM HI TECH">UTILITI KHT</option>
+<option value="K1-21 PERSIARAN PUTRA">▸ BBP PERSIARAN PUTRA</option>
+<option value="UTILITI PERSIARAN PUTRA">UTILITI LPP</option>
+<option value="K1-16 YAN">▸ BBP YAN</option>
+<option value="UTILITI YAN">UTILITI YAN</option>
+<option value="K1-05 AMANJAYA">▸ BBP AMANJAYA</option>
+<option value="UTILITI AMANJAYA">UTILITI AMJ</option>
+<option value="K1-18, K2-02 PENDANG">▸ BBP PENDANG</option>
+<option value="K2-02 PENDANG">EMRS PDG</option>
+<option value="UTILITI PENDANG">UTILITI PDG</option>
+<option value="K1-17 POKOK SENA">▸ BBP POKOK SENA</option>
+<option value="UTILITI POKOK SENA">UTILITI PSN</option>
+<option value="K1-22 PADANG MAT SIRAT">▸ BBP PADANG MAT SIRAT</option>
+<option value="UTILITI PADANG MAT SIRAT">UTILITI PMS</option>
+</select>
+<br/><br/>
+<textarea cols="20" id="inputJentera" name="inputJentera" placeholder="Masukkan Jentera" required="" rows="3"></textarea>
+</th>
+</tr>
+
+<tr>
+ <th>PASUKAN PENYIASAT</th>
+ <th>MANGSA</th>
+ <th colspan="2">KOMANDER OPERASI/PEG. OPERASI</th>
+ <th>PEGAWAI KANAN YANG HADIR</th>
+ <th>MASA OPERASI TAMAT</th>
+</tr>
+<tr>
+<th><textarea id="pasukanPenyiasat" name="pasukanPenyiasat" placeholder="Pasukan Penyiasat" type="text" autocomplete="off"></textarea></th>
+<th>
+<input id="BilMangsa" placeholder="Bil Mangsa" type="number"/>
+<br/>
+<select id="Jantina" name="Jantina">
+<option value="">JANTINA</option>
+<option value="LELAKI">LELAKI</option>
+<option value="PEREMPUAN">PEREMPUAN</option>
+</select>
+<br/>
+<select id="KategoriUmur" name="KategoriUmur">
+<option value="">KATEGORI UMUR</option>
+<option value="KANAK-KANAK">KANAK-KANAK</option>
+<option value="DEWASA">DEWASA</option>
+<option value="WARGA EMAS">WARGA EMAS</option>
+</select>
+<br/>
+<select id="TahapKecederaan" name="TahapKecederaan">
+<option value="">TAHAP KECEDERAAN</option>
+<option value="SELAMAT">SELAMAT</option>
+<option value="CEDERA">CEDERA</option>
+<option value="MATI">MATI</option>
+</select>
+<br/><br/>
+<textarea id="maklumatBolehUbah" name="maklumatBolehUbah" placeholder="Maklumat Mangsa"></textarea>
+</th>
+<th colspan="2">
+<select id="selectKomander" onchange="pilihKomander()">
+<option value="">SILA PILIH</option>
+<option value="PBK II MOHD RADZI BIN ABDUL TALIB">AST-PBK II MOHD RADZI - 5356</option>
+<option value="PBK I MOHD FAIZSAL BIN CHE ME">AST-PBK I MOHD FAIZSAL - 11428</option>
+<option value="PBK I MOHD REZUAN BIN MD EDAR">LKW-PBK I MOHD REZUAN - 8925</option>
+<option value="PBK II NURUL ANUAR BIN MOHD OMAR">LKW-PBK II NURUL ANUAR - 15795</option>
+<option value="PBK II AHMAD MUNIR BIN ABDUL AZIZ">JTR - PBK II AHMAD MUNIR - 12626</option>
+<option value="PBK II MOHAMAD HAZIM HILMAN BIN HAMID">JTR - PBK II MOHAMAD HAZIM -17574</option>
+<option value="PBK I KUP ZULKIFLEE BIN MAT ISA">JRJ - PBK I KUP ZULKIFLEE - 9096</option>
+<option value="PBK II MUHD IRSHAD BIN ISMAIL">GCK - PBK II MUHD IRSHAD - 16426</option>
+<option value="PBK I MUHAMAD ASLAN BIN YUSOF">SGP - PBK I MUHAMAD ASLAN - 12305</option>
+<option value="PBK II MUHAMAD RAHIMI BIN ABU HASAN">SGP - PBK II MUHAMAD RAHIMI - 9255</option>
+<option value="PBK II KUP MOHAMMAD SOLEHUDIN BIN HASSAN">BLG - PBK II KUP SOLEHUDIN - 10047</option>
+<option value="PBK I KUP MOHD SHUIB BIN ABU BAKAR">KLM - PBK I KUP MOHD SHUIB - 7291</option>
+<option value="PBK II SHAARI BIN HASHIM">TBT - PBK II SHAARI - 7979</option>
+<option value="PBK II SHAHRIL BIN SALLEH">SIK - PBK II SHAHRIL - 12336</option>
+<option value="PBK II RAHIM BIN MOHD RASHID">KNG - PBK II RAHIM - 15798</option>
+<option value="PBK II MAHMUD BIN JANI">BKH - PBK II MAHMUD - 8901</option>
+<option value="PBK I KUP SHAHNIZAL BIN SHAARI">SDG - PBK I KUP SHAHNIZAL - 8838</option>
+<option value="PBK II ZABIDIN BIN MAT DESA">KHT - PBK II ZABIDIN - 8243</option>
+<option value="PBK II MOHAMMAD SOFIAN BIN ABD. MANAN">LPP - PBK II SOFIAN - 15149</option>
+<option value="PBK II QYAIRUL EQWAN BIN HAJI SUIB">YAN - PBK II QYAIRUL - 13061</option>
+<option value="PBK II MUHAMAD FAKHRURRADZI BIN OMAR">AMJ - PBK II MUHAMAD FAKHRURRADZI - 13810</option>
+<option value="PBK I KUP MUHAMAD FARID BIN ABDULLAH">PDG - PBK I KUP MUHAMAD FARID - 9632</option>
+<option value="PBK II ANUAR BIN AB HAMID">PSN - PBK II ANUAR - 8254</option>
+<option value="PBK II MOHAMAD SABRI BIN AHMAD">PMS - PBK II MOHAMAD SABRI - 9619</option>
+</select>
+<br/><br/>
+<textarea cols="20" id="inputKomander" name="inputKomander" placeholder="Komander Operasi" required="" rows="3"></textarea>
+</th>
+<th><textarea id="pegawaiKanan" name="pegawaiKanan" placeholder="Pegawai Kanan" type="text" autocomplete="off"></textarea></th>
+<th><input id="masaTamat" maxlength="8" name="masaTamat" oninput="formatMasa(this) " placeholder="hh:mm:ss" type="text" autocomplete="off"/></th>
+</tr>
+
+</table>
+
+<div style="text-align: center; margin-bottom: 10px;"><input id="bilPapar" placeholder="Masukkan Bilangan" type="number"/></div><div style="text-align: center; margin-top: 20px;"><button type="submit">HANTAR</button><button onclick="clearForm()" type="button">KOSONGKAN</button><button onclick="kemaskiniData()" type="button">KEMASKINI</button><button onclick="paparData()" type="button">PAPAR</button></div></form>
+</div>
+<p></p>
+<h3>DATA TERKINI</h3>
+<table border="2" cellpadding="10" cellspacing="2">
+<thead>
+<tr>
+<th rowspan="2">BIL</th>
+<th rowspan="2">JENIS KEJADIAN, ALAMAT DAN NO.RUJUKAN</th>
+<th colspan="2">MASA TERIMA PANGGILAN</th>
+<th rowspan="2">KETERANGAN KEJADIAN</th>
+<th rowspan="2">JENTERA BALAI/PASUKAN YANG HADIR</th>
+<th rowspan="2">PASUKAN PENYIASAT</th>
+<th rowspan="2">MANGSA</th>
+<th rowspan="2">KOMANDER OPERASI/PEG. OPERASI</th>
+<th rowspan="2">PEGAWAI KANAN YANG HADIR</th>
+<th rowspan="2">MASA OPERASI TAMAT</th>
+</tr>
+<tr>
+<th>BALAI</th>
+<th>PGO</th>
+</tr>
+<!-- Header table -->
+</thead>
+<tbody id="tableDataBody"></tbody>
+</table>
+<div id="popupTunggu" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#222; color:#fff; padding:25px 30px; border-radius:10px; font-weight:bold; box-shadow:0 0 15px rgba(255,255,255,0.4); z-index:1000; transition: all 0.3s ease-in-out;">
+    Sila Tunggu Sebentar...
+  </div>
+<script>
+    
+
+    function updateDateTime() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dateStr = now.toLocaleDateString('ms-MY', options);
+      const timeStr = now.toLocaleTimeString('ms-MY');
+      document.getElementById("datetime").textContent = `Tarikh: ${dateStr} | Masa: ${timeStr}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script><script>
+    function pilihJenisKebakaran() {
+      const pilihan = document.getElementById("selectJenis").value;
+      document.getElementById("inputJenis").value = pilihan;
+    }
+    function pilihKeterangan() {
+      const pilihan = document.getElementById("selectKeterangan").value;
+      document.getElementById("inputKeterangan").value = pilihan;
+    }
+    function pilihJentera() {
+      const pilihan = document.getElementById("selectJentera").value;
+      document.getElementById("inputJentera").value = pilihan;
+    }
+    function pilihKomander() {
+      const pilihan = document.getElementById("selectKomander").value;
+      document.getElementById("inputKomander").value = pilihan;
+    }
+    function formatMasa(input) {
+      let nilai = input.value.replace(/\D/g, '');
+      if (nilai.length > 6) nilai = nilai.slice(0, 6);
+      let jam = nilai.substring(0, 2);
+      let minit = nilai.substring(2, 4);
+      let saat = nilai.substring(4, 6);
+      let format = jam;
+      if (minit) format += ":" + minit;
+      if (saat) format += ":" + saat;
+      input.value = format;
+    }
+    function autoTambahMaklumat() {
+      const bil = document.getElementById("BilMangsa").value;
+      const jantina = document.getElementById("Jantina").value;
+      const kategori = document.getElementById("KategoriUmur").value;
+      const kecederaan = document.getElementById("TahapKecederaan").value;
+      const ruangMaklumat = document.getElementById("maklumatBolehUbah");
+      if (bil && jantina && kategori && kecederaan) {
+        const ayat = `${bil} X ${jantina} ${kategori} ${kecederaan},`;
+        if (ruangMaklumat.value !== "") ruangMaklumat.value += "\n";
+        ruangMaklumat.value += ayat;
+        document.getElementById("BilMangsa").value = "";
+        document.getElementById("Jantina").value = "";
+        document.getElementById("KategoriUmur").value = "";
+        document.getElementById("TahapKecederaan").value = "";
+      }
+    }
+
+    window.onload = function () {
+      // Papar Bil Semasa
+      fetch('https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)')
+      .then(response => response.text())
+      .then(bil => {
+        document.getElementById("bil_display").value = bil;
+      });
+
+      // Papar Data Table Bawah
+      fetch('https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)&paparData=true')
+      .then(response => response.json())
+      .then(data => {
+        const tbody = document.getElementById("tableDataBody");
+        tbody.innerHTML = "";
+        data.forEach(row => {
+          const tr = document.createElement("tr");
+          row.forEach(cell => {
+            const td = document.createElement("td");
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      });
+
+      // autoTambahMaklumat
+      document.getElementById("BilMangsa").addEventListener("change", autoTambahMaklumat);
+      document.getElementById("Jantina").addEventListener("change", autoTambahMaklumat);
+      document.getElementById("KategoriUmur").addEventListener("change", autoTambahMaklumat);
+      document.getElementById("TahapKecederaan").addEventListener("change", autoTambahMaklumat);
+    }
+
+    function paparData() {
+      const bil = document.getElementById("bilPapar").value;
+      if (!bil) {
+        alert("Sila masukkan Bilangan!");
+        return;
+      }
+      document.getElementById("popupTunggu").style.display = "block";
+
+      fetch(`https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)&paparBil=${bil}`)
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById("bil_display").value = data[0];
+          const parts = (data[1] || "").split('\n');
+          document.getElementById("inputJenis").value = parts[0] || "";
+          document.getElementById("alamat").value = parts[1] || "";
+          document.getElementById("bilNombor").value = (parts[2] || "").split(":")[1]?.trim().split("/")[0] || "";
+          document.getElementById("masaBalai").value = data[2];
+          document.getElementById("masaPgo").value = data[3];
+          document.getElementById("inputKeterangan").value = data[4];
+          document.getElementById("inputJentera").value = data[5];
+          document.getElementById("pasukanPenyiasat").value = data[6];
+          document.getElementById("maklumatBolehUbah").value = data[7];
+          document.getElementById("inputKomander").value = data[8];
+          document.getElementById("pegawaiKanan").value = data[9];
+          document.getElementById("masaTamat").value = data[10];
+        })
+        .finally(() => {
+          document.getElementById("popupTunggu").innerText = "Data berjaya dipapar!";
+          setTimeout(() => {
+            document.getElementById("popupTunggu").style.display = "none";
+            document.getElementById("popupTunggu").innerText = "Sila Tunggu Sebentar...";
+          }, 2000);
+        });
+    }
+
+    function kemaskiniData() {
+  const bil = document.getElementById("bilPapar").value;
+  const popup = document.getElementById("popupTunggu");
+
+  if (!bil) {
+    alert("Sila masukkan Bilangan untuk dikemaskini!");
+    return;
+  }
+
+  const formData = new FormData(document.querySelector("form"));
+  formData.append("update", true);
+  formData.append("bilKemaskini", bil);
+
+  popup.style.display = "block";
+  popup.innerText = "Sila Tunggu Sebentar...";
+
+  fetch("https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)", {
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.text())
+  .then(res => {
+    console.log("Response dari server:", res); // Debug log
+
+    popup.innerText = "✅ Data berjaya dikemaskini!";
+    setTimeout(() => {
+      // Auto-refresh selepas 2 saat
+      location.reload();
+    }, 2000);
+  })
+  .catch(error => {
+    console.error("Ralat kemaskini:", error);
+    popup.innerText = "❌ Ralat semasa kemaskini!";
+    setTimeout(() => {
+      popup.style.display = "none";
+      popup.innerText = "Sila Tunggu Sebentar...";
+    }, 3000);
+  });
+}
+
+
+    function tunjukPopup() {
+      document.getElementById("popupTunggu").style.display = "block";
+      document.getElementById("popupTunggu").innerText = "Sila Tunggu Sebentar...";
+      setTimeout(() => {
+        document.getElementById("popupTunggu").innerText = "Data berjaya dihantar!";
+        setTimeout(() => {
+          document.getElementById("popupTunggu").style.display = "none";
+          document.getElementById("popupTunggu").innerText = "Sila Tunggu Sebentar...";
+        }, 2000);
+      }, 2000);
+      return true;
+    }
+  
+function clearForm() {
+  const form = document.querySelector("form");
+  if (form) {
+    form.reset();
+    const textareas = form.querySelectorAll("textarea");
+    textareas.forEach(txt => txt.value = "");
+  }
+}
+function hantarForm() {
+  const popup = document.getElementById("popupTunggu");
+  popup.style.display = "block";
+  popup.innerText = "Sila Tunggu Sebentar...";
+
+  const form = document.getElementById("borangPO7");
+  const formData = new FormData(form);
+
+  const url = "https://script.google.com/macros/s/AKfycbz44m2Vxcdo7I-IxtBnq6aF-vQc-FgeyxlkR2ulYmRYeKfEIAPK-XiD-maGwMOz9e91/exec?sheet=P07 (MENYELAMAT)";
+
+  fetch(url, {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(res => {
+    console.log("Respon:", res);
+    popup.innerText = "✅ Data berjaya dihantar!";
+    setTimeout(() => {
+      location.reload(); // ✅ Auto reload ke page asal
+    }, 2000);
+  })
+  .catch(err => {
+    console.error(err);
+    popup.innerText = "❌ Ralat semasa hantar!";
+    setTimeout(() => {
+      popup.style.display = "none";
+      popup.innerText = "Sila Tunggu Sebentar...";
+    }, 3000);
+  });
+
+  return false; // 🛑 Halang submit asal
+}
+
+</script>
+
+<footer>
+  <p>© 2025 <strong>Jabatan Bomba dan Penyelamat Malaysia - Negeri Kedah</strong>. Hak cipta terpelihara.</p>
+<p>Jalan Suka Menanti, 05150 Alor Setar, Kedah Darul Aman</p>
+<p>Hubungi: <a href="mailto:pgokedah2014@gmail.com">pgokedah2014@gmail.com</a> | Tel: 04-7007757</p>
+<p>Dibangunkan oleh Unit ICT PGO Kedah</p>
+</footer>
+</body>
+</html>
