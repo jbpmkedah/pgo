@@ -134,6 +134,38 @@ footer {
         padding: 10px;
       }
     }
+    /* SUBMENU untuk PO7 di dalam PGO */
+.submenu {
+  position: relative;
+}
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #027a8f;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  z-index: 1001;
+}
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+.submenu-content a {
+  padding: 12px 16px;
+  display: block;
+  color: white;
+  text-align: center;
+}
+
+.submenu-content a:hover {
+  background-color: #01566d;
+}
+
     /* Modal styles */
     #popupModal {
   display: none;
@@ -242,6 +274,7 @@ footer {
 
   <nav class="navbar">
     <a href="index.html">HALAMAN UTAMA</a>
+
     <div class="dropdown">
       <button class="dropbtn">PO3 ▾</button>
       <div class="dropdown-content">
@@ -251,14 +284,25 @@ footer {
         <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
       </div>
     </div>
+
     <div class="dropdown">
       <button class="dropbtn">PGO ▾</button>
       <div class="dropdown-content">
+        <!-- PO7 submenu -->
+        <div class="submenu">
+          <a href="#">PO7 ▸</a>
+          <div class="submenu-content">
+            <a href="po7kebakaran.html">KEBAKARAN</a>
+            <a href="po7menyelamat.html">MENYELAMAT</a>
+            <!-- Tambah lagi jika perlu -->
+          </div>
+        </div>
         <a href="kemaskinipo3.html">KEMASKINI PO3</a>
         <a href="muatturun.html">MUAT TURUN</a>
         <a href="data.html">STATUS KEMASKINI</a>
       </div>
     </div>
+
     <a href="panduan.html">PANDUAN</a>
   </nav>
 
