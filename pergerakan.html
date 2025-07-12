@@ -105,6 +105,38 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    /* SUBMENU untuk PO7 di dalam PGO */
+.submenu {
+  position: relative;
+}
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #027a8f;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.4);
+  border-radius: 6px;
+  z-index: 1001;
+}
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+.submenu-content a {
+  padding: 12px 16px;
+  display: block;
+  color: white;
+  text-align: center;
+}
+
+.submenu-content a:hover {
+  background-color: #01566d;
+}
+
 footer {
       background-color: #000000cc;
       color: #ddd;
@@ -231,8 +263,9 @@ footer {
     <img src="media/logo1.png" alt="Logo Kanan">
 </header>
 <nav class="navbar">
-<a href="index.html">HALAMAN UTAMA</a>
-<div class="dropdown">
+    <a href="index.html">HALAMAN UTAMA</a>
+
+    <div class="dropdown">
       <button class="dropbtn">PO3 ▾</button>
       <div class="dropdown-content">
         <a href="paparan.html">PAPARAN</a>
@@ -240,17 +273,28 @@ footer {
         <a href="kekuatanpersonal.html">KEKUATAN PERSONEL</a>
         <a href="pergerakan.html">PERGERAKAN LOGISTIK</a>
       </div>
-</div>
-<div class="dropdown">
-<button class="dropbtn">PGO ▾</button>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">PGO ▾</button>
       <div class="dropdown-content">
+        <!-- PO7 submenu -->
+        <div class="submenu">
+          <a href="#">PO7 ▸</a>
+          <div class="submenu-content">
+            <a href="po7kebakaran.html">KEBAKARAN</a>
+            <a href="po7menyelamat.html">MENYELAMAT</a>
+            <!-- Tambah lagi jika perlu -->
+          </div>
+        </div>
         <a href="kemaskinipo3.html">KEMASKINI PO3</a>
         <a href="muatturun.html">MUAT TURUN</a>
         <a href="data.html">STATUS KEMASKINI</a>
       </div>
-</div>
-<a href="panduan.html">PANDUAN</a>
-</nav>
+    </div>
+
+    <a href="panduan.html">PANDUAN</a>
+  </nav>
   <main>
     <h3 style="text-align: center;">LAPORAN PERGERAKAN LOGISTIK</h3>
     <form action="https://script.google.com/macros/s/AKfycbyvnYAiHREgkDHXu2CdbAnpxU7hrvlQb54xuojLx6Gde1ifh6sNFdXkvJWsORj1eocF2A/exec" method="post" onsubmit="return handleSubmit(this);">
