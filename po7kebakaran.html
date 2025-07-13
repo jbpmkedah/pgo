@@ -502,6 +502,23 @@ function hantarForm() {
 
   return false; // 🛑 Halang submit asal
 }
+      document.getElementById("selectJenis").addEventListener("change", function () {
+  const jenis = this.value;
+  const keteranganSelect = document.getElementById("selectKeterangan");
+
+  // Cari dalam senarai <option> yang padan dengan 'jenis'
+  for (let i = 0; i < keteranganSelect.options.length; i++) {
+    const option = keteranganSelect.options[i];
+    if (option.textContent.trim().toUpperCase() === jenis.toUpperCase()) {
+      keteranganSelect.selectedIndex = i;
+      document.getElementById("inputKeterangan").value = option.value;
+      break;
+    }
+  }
+
+  // Juga update inputJenis seperti asal
+  document.getElementById("inputJenis").value = jenis;
+});
 
 </script>
 <footer>
